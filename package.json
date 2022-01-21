@@ -1,0 +1,7 @@
+{
+  "name": "osaka_opas_auto_manipulation",
+  "private": true,
+  "dependencies": {
+    "admin-lte": "^3.0"
+  }
+}
