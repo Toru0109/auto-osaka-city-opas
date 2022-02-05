@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+#logo {
+  width: 230px;
+  height: 140px;
+}
+
+#mainNav {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position: initial;
+}
+
+/* フッターの固定 */
+.wrapper {
+  position: relative;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* フッターの固定 */
+.copyright {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

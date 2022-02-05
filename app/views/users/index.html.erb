@@ -1,0 +1,15 @@
+<style>
+.sign_in_link:hover {
+  color: #212529;
+}
+</style>
+
+<div style="background: #63b47a;height: 80vh;padding-top: 80px;">
+  <%= render partial: "shared/form",
+    locals: {
+      form_name: '会員登録',
+      sign_up: true,
+      button_name: '登録',
+    }
+  %>
+</div>

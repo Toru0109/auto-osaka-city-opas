@@ -1,0 +1,21 @@
+<!-- 参照元サイト：https://deshinon.com/2019/03/03/oshare-kopipe-login-css/ -->
+<form>
+	<h1><%= form_name %></h1>
+  <% if sign_up %>
+	  <input placeholder="ユーザー名" type="text"/>
+  <% end %>
+	<input placeholder="利用者番号" type="text"/>
+	<input placeholder="パスワード" type="password"/>
+	<button class="btn"><%= button_name %></button>
+</form>
+<footer>
+  <% if sign_up %>
+    <h5>既にアカウントをお持ちの方：
+      <a href="/sign_in" class="sign_in_link" style="text-decoration: none;">ログイン</a>
+    </h5>
+  <% else %>
+    <h5>アカウントをお持ちではない方：
+      <a href="/sign_up" class="sign_up_link" style="text-decoration: none;">会員登録</a>
+    </h5>
+  <% end %>
+</footer>

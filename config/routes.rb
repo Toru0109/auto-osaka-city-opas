@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "tops#index"
+  get '/sign_up', to: 'users#index'
+  get '/sign_in', to: 'sessions#new'
 end
