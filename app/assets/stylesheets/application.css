@@ -19,6 +19,22 @@
   height: 100px;
 }
 
+.form_section {
+  background: #63b47a;
+  height: 80vh;
+  padding-top: 80px;
+}
+
+.sign_up_link,
+.sign_in_link {
+  text-decoration: none;
+}
+
+.sign_up_link:hover,
+.sign_in_link:hover {
+  color: #212529;
+}
+
 #mainNav {
   padding-top: 0px;
   padding-bottom: 0px;

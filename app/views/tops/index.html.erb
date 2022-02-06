@@ -2,8 +2,8 @@
   <div class="hero-container">
     <h1>大阪市スポーツ施設の空き状況を<br>より楽に確認！</h1>
     <h2>あなたに代わって自動で画面入力をします。</h2>
-    <a href="/sign_up" class="btn-get-started scrollto" style="margin-bottom: 30px;">使ってみる</a>
-    <a href="/sign_in" class="btn-get-started scrollto">ユーザーはこちら</a>
+    <%= link_to '使ってみる', sign_up_path, class: 'btn-get-started scrollto', style: 'margin-bottom: 30px;' %>
+    <%= link_to 'ユーザーはこちら', sign_in_path, class: 'btn-get-started scrollto' %>
   </div>
 </section>
 
@@ -16,10 +16,16 @@
       <div class="row">
         <div style="display: flex; justify-content: center;">
           <ul>
-            <li><i class="bi bi-check2-circle"></i> 大阪市オーパスの利用者番号とパスワードを登録</li>
-            <li><i class="bi bi-check2-circle"></i> スポーツとよく利用する施設を登録</li>
-            <li><i class="bi bi-check2-circle"></i> 処理開始をクリック</li>
-            <li style="font-size: 30px;padding-top: 20px;"> １週間分の施設の空き状況を自動で表示！</li>
+            <li>
+              <i class="bi bi-check2-circle"></i>大阪市オーパスの利用者番号とパスワードを登録
+            </li>
+            <li>
+              <i class="bi bi-check2-circle"></i>スポーツとよく利用する施設を登録
+            </li>
+            <li>
+              <i class="bi bi-check2-circle"></i>処理開始をクリック
+            </li>
+            <li style="font-size: 30px;padding-top: 20px;">１週間分の施設の空き状況を自動で表示！</li>
           </ul>
         </div>
       </div>
@@ -27,9 +33,9 @@
   </section>
 </main>
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+<%= link_to '#', class: 'back-to-top d-flex align-items-center justify-content-center' do %>
   <i class="bi bi-arrow-up-short"></i>
-</a>
+<% end %>
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

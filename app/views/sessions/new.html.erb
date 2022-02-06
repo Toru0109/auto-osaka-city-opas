@@ -1,15 +1,3 @@
-<style>
-.sign_up_link:hover {
-  color: #212529;
-}
-</style>
-
-<div style="background: #63b47a;height: 80vh;padding-top: 80px;">
-  <%= render partial: "shared/form",
-    locals: {
-      form_name: 'ログイン',
-      sign_up: false,
-      button_name: 'ログイン'
-    }
-  %>
-</div>
+<%= render partial: "shared/form",
+  locals: { form_hash: { url: sign_in_path }, sign_up: false }
+%>
