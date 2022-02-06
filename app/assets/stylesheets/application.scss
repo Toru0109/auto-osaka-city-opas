@@ -25,14 +25,18 @@
   padding-top: 80px;
 }
 
-.sign_up_link,
-.sign_in_link {
+.sign_up_link {
   text-decoration: none;
+  &:hover {
+    color: #212529;
+  }
 }
 
-.sign_up_link:hover,
-.sign_in_link:hover {
-  color: #212529;
+.sign_in_link {
+  text-decoration: none;
+  &:hover {
+    color: #212529;
+  }
 }
 
 #mainNav {
