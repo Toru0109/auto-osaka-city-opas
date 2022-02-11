@@ -10,3 +10,6 @@
 
 # 不明点
 * turbolinksの設定
+* redirect_toとrenderの違い
+* flashとflash.nowの違い
+* railsアプリにおけるリダイレクトの動きについて
