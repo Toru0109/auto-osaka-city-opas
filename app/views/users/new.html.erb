@@ -1,3 +1,11 @@
-<%= render partial: "shared/form",
-  locals: { form_hash: { model: @user, url: sign_up_path }, sign_up: true }
-%>
+<!-- 参照元サイト：https://deshinon.com/2019/03/03/oshare-kopipe-login-css/ -->
+<div class="form_section">
+  <%= render partial: "shared/authentication_form",
+    locals: { form_hash: { model: @user, url: sign_up_path }, sign_up: true }
+  %>
+  <footer>
+    <h5>既にアカウントをお持ちの方：
+      <%= link_to 'ログイン', sign_in_path, class: 'sign_in_link' %>
+    </h5>
+  </footer>
+</div>

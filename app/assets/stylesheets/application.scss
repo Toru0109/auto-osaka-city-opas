@@ -19,10 +19,14 @@
   height: 100px;
 }
 
-.form_section {
-  background: #63b47a;
-  height: 80vh;
-  padding-top: 80px;
+.flash-message {
+  width: 80%;
+  text-align: center;
+  margin: 0px auto 30px auto;
+  ul {
+    margin-bottom: 0px;
+    list-style: none;
+  }
 }
 
 .sign_up_link {
@@ -45,17 +49,29 @@
   position: initial;
 }
 
-/* フッターの固定 */
-.wrapper {
-  position: relative;
-  padding-bottom: 60px;
-  box-sizing: border-box;
-  min-height: 100vh;
+#authenticate-body {
+  height: 100%;
 }
 
-/* フッターの固定 */
+#authenticate-body .main {
+  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);;
+  padding-top: 30px;
+  height: 100%;
+}
+
+nav#navigation-bar {
+  height: 100px;
+  padding: 0px 100px;
+}
+
+nav ul li.nav-item a.nav-link {
+  color: #212b36 !important;
+  &:hover {
+    color: #5c6ac4 !important;
+  }
+}
+
 .copyright {
-  position: absolute;
-  bottom: 0;
   width: 100%;
+  background-color: #000639;
 }
