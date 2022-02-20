@@ -13,3 +13,9 @@
 * redirect_toとrenderの違い
 * flashとflash.nowの違い
 * railsアプリにおけるリダイレクトの動きについて
+
+# メモ
+* トップ画面のデザインは下記サイトを参考にした  
+  * https://hatchful.shopify.com/ja/#testimonials
+* ロゴは下記サイトで作成  
+  * https://www.canva.com/design/DAE4VVXfRdU/mpRvnxvGPg0uik3PkDjUbw/edit
