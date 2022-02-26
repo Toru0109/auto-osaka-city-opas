@@ -52,7 +52,7 @@
             </div>
             <div class="modal-body">
               <ul>
-                <% flash[:danger].to_a.each do |message| %>
+                <% Array(flash[:danger]).each do |message| %>
                   <li><%= message %></li>
                 <% end %>
               </ul>

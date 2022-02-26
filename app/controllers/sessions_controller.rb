@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by_user_number(params[:user_number])
+    user = User.find_by(user_number: params[:user_number])
     if user && user.authenticate(params[:password])
       flash[:success] = 'ログインに成功しました。'
       redirect_to automation_settings_path
