@@ -2,8 +2,8 @@
   <div class="hero-container">
     <h1>大阪市スポーツ施設の空き状況を<br>より楽に確認！</h1>
     <h2>あなたに代わって自動で画面入力をします。</h2>
-    <%= link_to '使ってみる', sign_up_path, class: 'btn-get-started scrollto', style: 'margin-bottom: 30px;' %>
-    <%= link_to 'ユーザーはこちら', sign_in_path, class: 'btn-get-started scrollto' %>
+    <%= link_to '使ってみる', 'javascript:(0);', class: 'btn-get-started', style: 'margin-bottom: 30px;', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-up-modal" %>
+    <%= link_to 'ユーザーはこちら', 'javascript:void(0);', class: 'btn-get-started', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-in-modal" %>
   </div>
 </section>
 
@@ -36,6 +36,42 @@
 <%= link_to '#', class: 'back-to-top d-flex align-items-center justify-content-center' do %>
   <i class="bi bi-arrow-up-short"></i>
 <% end %>
+
+<div class="modal fade" id="sign-up-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sign-up-modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sign-up-modal-title">会員登録</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form_section">
+          <%= render partial: "shared/sign_up_and_in_form",
+            locals: { form_hash: { model: User.new, url: sign_up_path, html: { onsubmit: "return signUpCheck();" } }, sign_up: true, id: 'sign-up' }
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sign-in-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sign-in-modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sign-in-modal-title">ログイン</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form_section">
+          <%= render partial: "shared/sign_up_and_in_form",
+            locals: { form_hash: { url: sign_in_path, html: { onsubmit: "return signInCheck();" } }, sign_up: false, id: 'sign-in' }
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

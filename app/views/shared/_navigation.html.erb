@@ -6,34 +6,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                  <%= link_to 'ログイン', sign_in_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+                  <%= link_to 'ログイン', 'javascript:(0);', class: 'nav-link py-3 px-0 px-lg-3 rounded', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-in-modal" %>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                  <%= link_to '会員登録', sign_up_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+                  <%= link_to '会員登録', 'javascript:(0);', class: 'nav-link py-3 px-0 px-lg-3 rounded', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-up-modal" %>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<!--
-<nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid">
-    <%= link_to root_path, class: 'navbar-brand' do %>
-      <%= image_tag 'logo.png', id: 'logo' %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="justify-content-end collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to 'ログイン', sign_in_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '会員登録', sign_up_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
--->

@@ -14,54 +14,16 @@
  *= require_self
  */
 
-#logo {
-  width: 230px;
-  height: 100px;
-}
-
-.flash-message {
-  width: 80%;
-  text-align: center;
-  margin: 0px auto 30px auto;
-  ul {
-    margin-bottom: 0px;
-    list-style: none;
-  }
-}
-
-.sign_up_link {
-  text-decoration: none;
-  &:hover {
-    color: #212529;
-  }
-}
-
-.sign_in_link {
-  text-decoration: none;
-  &:hover {
-    color: #212529;
-  }
-}
-
+/* ナビゲーションバー */
 #mainNav {
   padding-top: 0px;
   padding-bottom: 0px;
   position: initial;
 }
 
-#authenticate-body {
-  height: 100%;
-}
-
-#authenticate-body .main {
-  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);;
-  padding-top: 30px;
-  height: 100%;
-}
-
-nav#navigation-bar {
+#logo {
+  width: 230px;
   height: 100px;
-  padding: 0px 100px;
 }
 
 nav ul li.nav-item a.nav-link {
@@ -71,7 +33,13 @@ nav ul li.nav-item a.nav-link {
   }
 }
 
+/* フッター */
 .copyright {
   width: 100%;
   background-color: #000639;
+}
+
+.close-messages-button {
+  box-shadow: none;
+  width: auto;
 }
