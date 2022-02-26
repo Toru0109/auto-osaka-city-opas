@@ -1,0 +1,21 @@
+<%= form_with form_hash.merge(local: true) do |f| %>
+  <% if sign_up %>
+    <div class="mb-3">
+      <%= f.text_field :user_name, class: 'form-control-sm', placeholder: 'ユーザー名', maxlength: 15 %>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= f.text_field :user_number, class: 'form-control-sm', placeholder: '利用者番号', maxlength: 8, 'aria-describedby': "#{id}_user_number" %>
+    <div id="<%=id%>_user_number" class="form-text">大阪市から発行された利用者番号を入力してください。</div>
+  </div>
+  <div class="mb-3">
+    <%= f.password_field :password, class: 'form-control-sm', placeholder: 'パスワード', maxlength: 8, 'aria-describedby': "#{id}_password" %>
+    <div id="<%=id%>_password" class="form-text">大阪市から発行されたパスワードを入力してください。</div>
+  </div>
+  <% if sign_up %>
+    <div class="mb-3">
+      <%= f.password_field :password_confirmation, class: 'form-control-sm', placeholder: 'パスワード（確認用）', maxlength: 8 %>
+    </div>
+  <% end %>
+  <%= f.submit (sign_up ? '登録' : 'ログイン'), class: "btn btn-primary #{id}-link" %>
+<% end %>

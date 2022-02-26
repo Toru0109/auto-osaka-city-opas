@@ -14,48 +14,32 @@
  *= require_self
  */
 
-#logo {
-  width: 230px;
-  height: 100px;
-}
-
-.form_section {
-  background: #63b47a;
-  height: 80vh;
-  padding-top: 80px;
-}
-
-.sign_up_link {
-  text-decoration: none;
-  &:hover {
-    color: #212529;
-  }
-}
-
-.sign_in_link {
-  text-decoration: none;
-  &:hover {
-    color: #212529;
-  }
-}
-
+/* ナビゲーションバー */
 #mainNav {
   padding-top: 0px;
   padding-bottom: 0px;
   position: initial;
 }
 
-/* フッターの固定 */
-.wrapper {
-  position: relative;
-  padding-bottom: 60px;
-  box-sizing: border-box;
-  min-height: 100vh;
+#logo {
+  width: 230px;
+  height: 100px;
 }
 
-/* フッターの固定 */
+nav ul li.nav-item a.nav-link {
+  color: #212b36 !important;
+  &:hover {
+    color: #5c6ac4 !important;
+  }
+}
+
+/* フッター */
 .copyright {
-  position: absolute;
-  bottom: 0;
   width: 100%;
+  background-color: #000639;
+}
+
+.close-messages-button {
+  box-shadow: none;
+  width: auto;
 }
