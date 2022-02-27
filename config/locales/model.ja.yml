@@ -5,3 +5,4 @@ ja:
           user_name: ユーザー名
           user_number: 利用者番号
           password: パスワード
+          password_confirmation: パスワード（確認用）
