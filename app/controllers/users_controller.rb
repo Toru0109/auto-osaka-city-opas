@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def create
+    if User.exists?(user_number: params[:user][:user_number])
+      flash[:danger] = '会員登録に失敗しました。'
+      return redirect_to root_path
+    end
+
     user = User.new(user_params)
     if user.save
       flash[:success] = '会員登録が完了しました。'
