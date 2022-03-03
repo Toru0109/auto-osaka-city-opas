@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       flash[:success] = '会員登録が完了しました。'
+      session[:user_id] = user.id
       redirect_to automation_settings_path
     else
       flash[:danger] = user.errors.full_messages

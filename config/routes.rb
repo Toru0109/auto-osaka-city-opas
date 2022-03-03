@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
+  delete '/sign_out', to: 'sessions#destroy'
 
   get '/automation_settings', to: 'automation_settings#index'
+  get '/automation_settings/:id', to: 'automation_settings#edit'
 end

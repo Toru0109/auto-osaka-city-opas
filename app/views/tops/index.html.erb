@@ -2,8 +2,10 @@
   <div class="hero-container">
     <h1>大阪市スポーツ施設の空き状況を<br>より楽に確認！</h1>
     <h2>あなたに代わって自動で画面入力をします。</h2>
-    <%= link_to '使ってみる', 'javascript:(0);', class: 'btn-get-started', style: 'margin-bottom: 30px;', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-up-modal" %>
-    <%= link_to 'ユーザーはこちら', 'javascript:void(0);', class: 'btn-get-started', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-in-modal" %>
+    <% unless logged_in? %>
+      <%= link_to '使ってみる', 'javascript:(0);', class: 'btn-get-started', style: 'margin-bottom: 30px;', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-up-modal" %>
+      <%= link_to 'ユーザーはこちら', 'javascript:void(0);', class: 'btn-get-started', 'data-bs-toggle': 'modal', 'data-bs-target': "#sign-in-modal" %>
+    <% end %>
   </div>
 </section>
 
