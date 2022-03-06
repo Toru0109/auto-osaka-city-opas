@@ -18,16 +18,16 @@
       <div class="row">
         <div style="display: flex; justify-content: center;">
           <ul>
-            <li>
+            <li class="usage-description">
               <i class="bi bi-check2-circle"></i>大阪市オーパスの利用者番号とパスワードを登録
             </li>
-            <li>
+            <li class="usage-description">
               <i class="bi bi-check2-circle"></i>スポーツとよく利用する施設を登録
             </li>
-            <li>
+            <li class="usage-description">
               <i class="bi bi-check2-circle"></i>処理開始をクリック
             </li>
-            <li style="font-size: 30px;padding-top: 20px;">１週間分の施設の空き状況を自動で表示！</li>
+            <li class="result-description">１週間分の施設の空き状況を自動で表示！</li>
           </ul>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <div class="modal-body">
         <div class="form_section">
           <%= render partial: "shared/sign_up_and_in_form",
-            locals: { form_hash: { model: User.new, url: sign_up_path, html: { onsubmit: "return signUpCheck();" } }, sign_up: true, id: 'sign-up' }
+            locals: { form_hash: { model: User.new, url: sign_up_path, html: { class: 'sign-up-form', onsubmit: "return signUpCheck();" } }, sign_up: true, id: 'sign-up' }
           %>
         </div>
       </div>
@@ -67,7 +67,7 @@
       <div class="modal-body">
         <div class="form_section">
           <%= render partial: "shared/sign_up_and_in_form",
-            locals: { form_hash: { url: sign_in_path, html: { onsubmit: "return signInCheck();" } }, sign_up: false, id: 'sign-in' }
+            locals: { form_hash: { url: sign_in_path, html: { class: 'sign-in-form', onsubmit: "return signInCheck();" } }, sign_up: false, id: 'sign-in' }
           %>
         </div>
       </div>
