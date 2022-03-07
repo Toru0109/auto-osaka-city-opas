@@ -6,11 +6,11 @@
   <% end %>
   <div class="mb-3">
     <%= f.text_field :user_number, class: 'form-control-sm', placeholder: '利用者番号', maxlength: 8, 'aria-describedby': "#{id}_user_number" %>
-    <div id="<%=id%>_user_number" class="form-text">大阪市から発行された利用者番号を入力してください。</div>
+    <small id="<%=id%>_user_number" class="text-muted">大阪市から発行された利用者番号を入力してください。</small>
   </div>
   <div class="mb-3">
     <%= f.password_field :password, class: 'form-control-sm', placeholder: 'パスワード', maxlength: 8, 'aria-describedby': "#{id}_password" %>
-    <div id="<%=id%>_password" class="form-text">大阪市から発行されたパスワードを入力してください。</div>
+    <small id="<%=id%>_password" class="text-muted">大阪市から発行されたパスワードを入力してください。</small>
   </div>
   <% if sign_up %>
     <div class="mb-3">

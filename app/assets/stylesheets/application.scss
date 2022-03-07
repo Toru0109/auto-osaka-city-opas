@@ -33,6 +33,10 @@ nav ul li.nav-item a.nav-link {
   }
 }
 
+.navbar-brand {
+  padding: 0px !important;
+}
+
 /* フッター */
 .copyright {
   width: 100%;
@@ -42,4 +46,28 @@ nav ul li.nav-item a.nav-link {
 .close-messages-button {
   box-shadow: none;
   width: auto;
+}
+
+@media screen and (max-width: 480px) {
+  nav .container {
+    text-align: center;
+    width: auto;
+  }
+  #logo {
+    width: 180px;
+    height: 100px;
+  }
+
+  .copyright {
+    padding: 12px 0px !important;
+  }
+
+  .copyright-text {
+    font-size: 12px;
+  }
+
+  div.copyright {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
 }
