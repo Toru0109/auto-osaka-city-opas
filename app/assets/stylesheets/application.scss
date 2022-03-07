@@ -49,9 +49,13 @@ nav ul li.nav-item a.nav-link {
 }
 
 @media screen and (max-width: 480px) {
+  nav .container {
+    text-align: center;
+    width: auto;
+  }
   #logo {
-    width: 120px;
-    height: 80px;
+    width: 180px;
+    height: 100px;
   }
 
   .copyright {

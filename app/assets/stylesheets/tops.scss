@@ -183,6 +183,10 @@ h6 {
   }
 }
 
+.mb-3 small {
+  font-size: small;
+}
+
 .result-description {
   font-size: 30px;
   padding-top: 20px;
@@ -224,6 +228,6 @@ h6 {
 
   .sign-up-form,
   .sign-in-form {
-    width: 280px;
+    width: 260px;
   }
 }
