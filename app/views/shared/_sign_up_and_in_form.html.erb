@@ -6,15 +6,21 @@
   <% end %>
   <div class="mb-3">
     <%= f.text_field :user_number, class: 'form-control-sm', placeholder: '利用者番号', maxlength: 8, 'aria-describedby': "#{id}_user_number" %>
-    <small id="<%=id%>_user_number" class="text-muted">大阪市から発行された利用者番号を入力してください。</small>
+    <div>
+      <small id="<%=id%>_user_number" class="text-muted">大阪市から発行された利用者番号を入力してください。</small>
+    </div>
   </div>
   <div class="mb-3">
-    <%= f.password_field :password, class: 'form-control-sm', placeholder: 'パスワード', maxlength: 8, 'aria-describedby': "#{id}_password" %>
-    <small id="<%=id%>_password" class="text-muted">大阪市から発行されたパスワードを入力してください。</small>
+    <%= f.password_field :password, class: 'form-control-sm password-input', placeholder: 'パスワード', maxlength: 8, 'aria-describedby': "#{id}_password" %>
+    <span class="fas fa-eye" onclick="togglePassword(this);"></span>
+    <div>
+      <small id="<%=id%>_password" class="text-muted">大阪市から発行されたパスワードを入力してください。</small>
+    </div>
   </div>
   <% if sign_up %>
     <div class="mb-3">
-      <%= f.password_field :password_confirmation, class: 'form-control-sm', placeholder: 'パスワード（確認用）', maxlength: 8 %>
+      <%= f.password_field :password_confirmation, class: 'form-control-sm password-input', placeholder: 'パスワード（確認用）', maxlength: 8 %>
+      <span class="fas fa-eye" onclick="togglePassword(this);"></span>
     </div>
   <% end %>
   <%= f.submit (sign_up ? '登録' : 'ログイン'), class: "btn btn-primary #{id}-link" %>
