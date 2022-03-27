@@ -1,0 +1,34 @@
+<tr id="automation_setting_row_<%= automation_setting.id %>">
+  <td class="table-plus">
+    <div class="name-avatar d-flex align-items-center">
+      <div class="txt">
+        <div class="weight-600">
+          <%= automation_setting.name %>
+        </div>
+      </div>
+    </div>
+  </td>
+  <td>
+    <%= automation_setting.sports_name %>
+  </td>
+  <td>靭テニスコート</td>
+  <td>
+    <button type="button" class="btn btn-primary btn-sm" style="box-shadow: none;">
+      処理開始
+    </button>
+  </td>
+  <td>
+    <div class="table-actions">
+      <%= link_to edit_automation_setting_path(automation_setting.id), "data-color": "#265ed7" do %>
+        <i class="icon-copy dw dw-edit2"></i>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="table-actions">
+      <%= link_to automation_setting_path(automation_setting.id), method: :delete, data: { confirm: "削除してよろしいですか？" }, id: "delete-link-#{automation_setting.id}", remote: true, "data-color": "#e95959" do %>
+        <i class="icon-copy dw dw-delete-3"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
