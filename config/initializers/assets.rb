@@ -17,4 +17,5 @@ Rails.application.config.assets.paths << Rails.root.join('assets', 'src')
 Rails.application.config.assets.precompile += %w(
   tops.css
   amoeba.css
+  automation_settings.css
 )
