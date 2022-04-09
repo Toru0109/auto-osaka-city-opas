@@ -1,4 +1,4 @@
-current_path = File.expand_path('../../../../', __FILE__)
+
 #unicornのpidファイル、設定ファイルのディレクトリを指定
 namespace :unicorn do
   task :environment do
