@@ -155,5 +155,3 @@ class OsakaOpas
     }
   end
 end
-
-OsakaOpas.new(User.find(1), AutomationSetting.find(1)).manipulate
