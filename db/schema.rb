@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_013842) do
     t.string "password", limit: 256, default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name", limit: 15, default: "", null: false
   end
 
   add_foreign_key "automation_settings", "users"
