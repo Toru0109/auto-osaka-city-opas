@@ -29,6 +29,9 @@ gem 'webdrivers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n', '~> 5.1'
 
+# JavaScriptの圧縮で使用
+gem 'terser', '~> 1.1', '>= 1.1.1'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
