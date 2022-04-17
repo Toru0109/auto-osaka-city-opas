@@ -18,13 +18,6 @@ Rails.application.config.assets.precompile += %w(
   tops.css
   amoeba.css
   automation_settings.css
-  vendor/bootstrap/*
-  vendor/bootstrap-icons/bootstrap-icons.css
-  vendor/bootstrap-icons/bootstrap-icons.json
-  vendor/bootstrap-icons/index.html
-  vendor/glightbox/*
-  vendor/isotope-layout/*
-  vender/php-email-form/*
-  vender/swiper/*
+  vendor/*
   js/*
 )
