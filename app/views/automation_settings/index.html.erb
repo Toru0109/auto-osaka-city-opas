@@ -4,7 +4,7 @@
 
 <div class="pre-loader">
 	<div class="pre-loader-box">
-		<div class="loader-logo"><img src="assets/vendors/images/deskapp-logo.svg" alt=""></div>
+		<div class="loader-logo"><%= image_tag 'vendors/images/deskapp-logo.svg', alt: '' %></div>
 		<div class='loader-progress' id="progress_div">
 			<div class='bar' id='bar1'></div>
 		</div>
@@ -82,42 +82,42 @@
 						<ul>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/img.jpg" alt="">
+									<%= image_tag 'vendors/images/img.jpg', alt: '' %>
 									<h3>John Doe</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/photo1.jpg" alt="">
+									<%= image_tag 'vendors/images/photo1.jpg', alt: '' %>
 									<h3>Lea R. Frith</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/photo2.jpg" alt="">
+									<%= image_tag 'vendors/images/photo2.jpg', alt: '' %>
 									<h3>Erik L. Richards</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/photo3.jpg" alt="">
+									<%= image_tag 'vendors/images/photo3.jpg', alt: '' %>
 									<h3>John Doe</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/photo4.jpg" alt="">
+									<%= image_tag 'vendors/images/photo4.jpg', alt: '' %>
 									<h3>Renee I. Hansen</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
 							</li>
 							<li>
 								<a href="#">
-									<img src="assets/vendors/images/img.jpg" alt="">
+									<%= image_tag 'vendors/images/img.jpg', alt: '' %>
 									<h3>Vicki M. Coleman</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 								</a>
@@ -132,7 +132,7 @@
 				<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 					<!-- ユーザーのアイコン -->
 					<span class="user-icon">
-						<img src="assets/vendors/images/photo1.jpg" alt="">
+						<%= image_tag 'vendors/images/photo1.jpg', alt: '' %>
 					</span>
 					<span class="user-name"><%= @current_user.user_name %></span>
 				</a>
@@ -424,7 +424,7 @@
 				<li>
 					<a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
 						<span class="micon dw dw-paper-plane1"></span>
-						<span class="mtext">Landing Page <img src="assets/vendors/images/coming-soon.png" alt="" width="25"></span>
+						<span class="mtext">Landing Page <%= image_tag 'vendors/images/coming-soon.png', width: '25', alt: '' %></span>
 					</a>
 				</li>
 			</ul>
