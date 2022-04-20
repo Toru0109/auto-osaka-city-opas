@@ -10,17 +10,17 @@
     <%= render partial: 'shared/meta' %>
 
   <!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap' %>
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/src/plugins/datatables/css/responsive.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendors/styles/style.css">
+	<%= stylesheet_link_tag 'vendors/styles/core', type: "text/css" %>
+	<%= stylesheet_link_tag 'vendors/styles/icon-font.min', type: "text/css" %>
+	<%= stylesheet_link_tag 'src/plugins/datatables/css/dataTables.bootstrap4.min', type: "text/css" %>
+	<%= stylesheet_link_tag 'src/plugins/datatables/css/responsive.bootstrap4.min', type: "text/css" %>
+	<%= stylesheet_link_tag 'vendors/styles/style', type: "text/css" %>
   <%= yield :css %>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<%= javascript_include_tag 'https://www.googletagmanager.com/gtag/js?id=UA-119386393-1', async: true %>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}

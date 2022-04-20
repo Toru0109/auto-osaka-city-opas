@@ -19,5 +19,7 @@ Rails.application.config.assets.precompile += %w(
   amoeba.css
   automation_settings.css
   vendor/*
+  vendors/*
+  src/*
   js/*
 )
