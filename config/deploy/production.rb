@@ -1,4 +1,4 @@
-# デプロイ時にSidekiqをデーモン起動
+# デプロイ時にSidekiqのデーモンを起動
 set :pty, false
 # conohaのサーバーのIP、ログインするユーザー名、サーバーの役割
 # xxxの部分はサーバーのIPアドレス

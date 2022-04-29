@@ -1,6 +1,7 @@
 class AutomationSettingsController < ApplicationController
   before_action :logged_in_user, only: [:index]
   before_action :check_automation_setting_owner, only: [:edit]
+  before_action :set_automation_setting, only: [:edit, :destroy, :execute]
 
   def index
     @automation_settings = AutomationSetting
@@ -19,11 +20,9 @@ class AutomationSettingsController < ApplicationController
   end
 
   def edit
-    @automation_setting = AutomationSetting.find(params[:id])
   end
 
   def destroy
-    @automation_setting = AutomationSetting.find_by(id: params[:id], user_id: current_user.id)
     if @automation_setting
       @automation_setting.destroy
       render :index
@@ -31,10 +30,9 @@ class AutomationSettingsController < ApplicationController
   end
 
   def execute
-    automation_setting = AutomationSetting.find_by(user_id: session[:user_id], id: params[:automation_setting_id])
-    render status: :not_found and return unless automation_setting
+    render status: :not_found and return unless @automation_setting
 
-    OsakaCityOpasOperateWorker.perform_at(3.second, session[:user_id], params[:automation_setting_id])
+    OsakaCityOpasOperateWorker.perform_at(3.second, session[:user_id], params[:id])
     render status: :accepted
   rescue
     # DB接続エラー
@@ -42,6 +40,13 @@ class AutomationSettingsController < ApplicationController
   end
 
   private
+
+  def set_automation_setting
+    @automation_setting = AutomationSetting.find_by(
+      id: params[:id],
+      user_id: session[:user_id]
+    )
+  end
 
   def check_automation_setting_owner
     automation_setting = AutomationSetting.find_by(id: params[:id])
