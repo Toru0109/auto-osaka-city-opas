@@ -34,7 +34,13 @@ class AutomationSettingsController < ApplicationController
 
     OsakaCityOpasOperateWorker.perform_at(3.second, session[:user_id], params[:id])
     render status: :accepted
-  rescue
+  rescue => ex
+    p '==============='
+    p ex.class
+    p ex.message
+    p ex.backtrace
+    p '==============='
+
     # DB接続エラー
     render status: :internal_server_error
   end
