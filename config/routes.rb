@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root to: "tops#index"
 
   get '/sign_up', to: 'users#new'
@@ -8,8 +11,6 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'sessions#create'
   delete '/sign_out', to: 'sessions#destroy'
 
-  # get '/automation_settings', to: 'automation_settings#index'
-  # get '/automation_settings/:id', to: 'automation_settings#show'
-  # get '/automation_settings/:id/edit', to: 'automation_settings#edit'
   resources :automation_settings
+  post '/execute', to: 'automation_settings#execute'
 end

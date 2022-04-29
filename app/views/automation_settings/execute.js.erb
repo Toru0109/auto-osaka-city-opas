@@ -1,0 +1,9 @@
+if (<%= response.status %> === 202) {
+  alert('処理を開始中です。ブラウザを開いたままお待ちください。');
+}
+if (<%= response.status %> === 404) {
+  alert('処理の開始に失敗しました。');
+}
+if (<%= response.status %> >= 500) {
+  alert('予期せぬエラーが発生しました。');
+}

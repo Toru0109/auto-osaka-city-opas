@@ -3,11 +3,15 @@ class AutomationSettingsController < ApplicationController
   before_action :check_automation_setting_owner, only: [:edit]
 
   def index
-    @automation_settings = AutomationSetting.where(user_id: @current_user.id)
+    @automation_settings = AutomationSetting
+      .where(user_id: @current_user.id)
+      .order(:id)
+
+    @automation_settings = @automation_settings
+      .where("name LIKE ?", "%#{params[:search_keyword]}%") if params[:search_keyword].present?
   end
 
   def new
-    
   end
 
   def show
@@ -24,6 +28,17 @@ class AutomationSettingsController < ApplicationController
       @automation_setting.destroy
       render :index
     end
+  end
+
+  def execute
+    automation_setting = AutomationSetting.find_by(user_id: session[:user_id], id: params[:automation_setting_id])
+    render status: :not_found and return unless automation_setting
+
+    OsakaCityOpasOperateWorker.perform_at(3.second, session[:user_id], params[:automation_setting_id])
+    render status: :accepted
+  rescue
+    # DB接続エラー
+    render status: :internal_server_error
   end
 
   private

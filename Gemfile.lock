@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/seuros/capistrano-sidekiq.git
+  revision: 784b04c973e5c074dc78c30746077c9e6fd2bb9a
+  specs:
+    capistrano-sidekiq (2.0.0)
+      capistrano (>= 3.9.0)
+      capistrano-bundler
+      sidekiq (>= 6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,6 +98,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     erubi (1.10.0)
     execjs (2.8.1)
@@ -118,6 +128,8 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.15.0)
     msgpack (1.4.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.3)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
@@ -131,6 +143,8 @@ GEM
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
+    rack-protection (2.2.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.6)
@@ -165,8 +179,12 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.6.0)
+    redis-namespace (1.8.2)
+      redis (>= 3.0.4)
     regexp_parser (2.2.0)
     rexml (3.2.5)
+    ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
     rubyzip (2.3.2)
     sass (3.7.4)
@@ -184,6 +202,15 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    sidekiq (6.4.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sinatra (2.2.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.2.0)
+      tilt (~> 2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -239,6 +266,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
+  capistrano-sidekiq!
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
@@ -249,8 +277,11 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.6)
   rails-i18n (~> 5.1)
+  redis-namespace
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq
+  sinatra
   spring
   spring-watcher-listen (~> 2.0.0)
   terser (~> 1.1, >= 1.1.1)

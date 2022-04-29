@@ -20,16 +20,19 @@
 		<div class="menu-icon dw dw-menu"></div>
 		<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
 		<div class="header-search">
-			<form style="padding: 0px;margin: 0px;">
+			<%= form_with url: automation_settings_path, local: true, method: 'get', :html => { style: 'padding: 0px;margin: 0px;' } do |f| %>
 				<div class="form-group mb-0">
-					<i class="dw dw-search2 search-icon"></i>
-					<input type="text" class="form-control search-input" placeholder="名称を入力">
+					<!--<i class="dw dw-search2 search-icon"></i>-->
+					<%= f.text_field :search_keyword, class: 'form-control search-input', placeholder: '名称を入力' %>
 					<div class="dropdown">
-						<!--
-						<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-							<i class="ion-arrow-down-c"></i>
-						</a>
-						-->
+
+						<!--<a class="search-button dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">-->
+						<%= button_tag :submit, class: "search-button dropdown-toggle no-arrow", "data-toggle": "tooltip", "data-placement": "right", "title": "検索" do %>
+							<!--<i class="ion-arrow-down-c"></i>-->
+							<i class="dw dw-search2 search-icon"></i>
+						<% end %>
+						<!--</a> -->
+
 						<!--
 						<div class="dropdown-menu dropdown-menu-right">
 							<div class="form-group row">
@@ -57,7 +60,7 @@
 						-->
 					</div>
 				</div>
-			</form>
+			<% end %>
 		</div>
 	</div>
 	<div class="header-right">
@@ -134,13 +137,15 @@
 					<span class="user-icon">
 						<%= image_tag 'vendors/images/photo1.jpg', alt: '' %>
 					</span>
-					<span class="user-name"><%= @current_user.user_name %></span>
+					<span class="user-name"><%= "#{@current_user.user_name}さん" %></span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-					<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-					<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-					<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-					<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+					<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> プロフィール</a>
+					<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> 設定</a>
+					<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> ヘルプ</a>
+					<%= link_to sign_out_path, method: :delete, class: "dropdown-item", data: { confirm: "ログアウトしますか？" } do %>
+						<i class="dw dw-logout"></i> ログアウト
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -229,14 +234,14 @@
 
 <div class="left-side-bar">
 	<div class="brand-logo">
-		<a href="index.html" class="side-bar-logo-link">
+		<%= link_to automation_settings_path, class: "side-bar-logo-link" do %>
 			<!--
 			<img src="assets/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
 			<img src="assets/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
 			-->
 			<%= image_tag 'side-bar-logo.png', class: 'side-bar-logo' %>
 			<span class="side-bar-logo-text">AutoOsakaCityOpas</span>
-		</a>
+		<% end %>
 		<div class="close-sidebar" data-toggle="left-sidebar-close">
 			<i class="ion-close-round"></i>
 		</div>

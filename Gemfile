@@ -32,6 +32,11 @@ gem 'rails-i18n', '~> 5.1'
 # JavaScriptの圧縮で使用
 gem 'terser', '~> 1.1', '>= 1.1.1'
 
+# sidekiq
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'redis-namespace'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -65,12 +70,12 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end

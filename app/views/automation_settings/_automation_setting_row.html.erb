@@ -13,9 +13,7 @@
   </td>
   <td>靭テニスコート</td>
   <td>
-    <button type="button" class="btn btn-primary btn-sm">
-      処理開始
-    </button>
+    <%= button_to "処理開始", execute_path, remote: true, params: { automation_setting_id: automation_setting.id }, class: "btn btn-primary btn-sm", data: { disable_with: "処理中..." } %>
   </td>
   <td>
     <div class="table-actions">
