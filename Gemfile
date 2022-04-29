@@ -33,7 +33,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'terser', '~> 1.1', '>= 1.1.1'
 
 # sidekiq
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra', require: false
 gem 'redis-namespace'
 
@@ -70,7 +70,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
+  # gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 end
 
 group :test do
