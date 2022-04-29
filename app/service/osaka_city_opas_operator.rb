@@ -1,16 +1,17 @@
 require 'webdrivers/chromedriver'
 require 'selenium-webdriver'
 
-class OsakaOpas
+class OsakaCityOpasOperator
   URL = 'https://reserve.opas.jp/osakashi/Welcome.cgi'.freeze
 
-  def initialize(user, automation_setting)
-    @user = user
-    @sports_type = automation_setting.sports_type.to_s
-    @facility_types = automation_setting.facility_types.split(',')
+  attr_reader :user_id, :automation_setting_id
+
+  def initialize(user_id, automation_setting_id)
+    @user_id = user_id
+    @automation_setting_id = automation_setting_id
   end
 
-  def manipulate
+  def display_availability
     open_welcome_page
     login
     process_selection
@@ -18,21 +19,32 @@ class OsakaOpas
     category_selection(:category_id)
     category_selection(:sub_category_id)
     facility_selection
-    driver.execute_script("alert('自動操作が終了しました。')")
+    driver.execute_script("alert('処理が正常に終了しました。')")
   rescue => ex
-    driver.execute_script("alert('自動操作は失敗しました。処理をやり直してください。')")
+    driver.execute_script("alert('処理の途中でエラーが発生しました。再度やり直してください。')")
   end
 
   private
 
-  def driver
-    return @driver if @driver.present?
+  def user
+    @user ||= User.find(user_id)
+  end
 
-    @driver = Selenium::WebDriver.for :chrome,
-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => { detach: true })
-    @driver.manage.window.maximize
-    @driver.manage.timeouts.implicit_wait = 10
-    @driver
+  def automation_setting
+    @automation_setting ||= AutomationSetting.find_by(
+      id: automation_setting_id,
+      user_id: user_id
+    )
+  end
+
+  def driver
+    @driver ||= begin
+      driver = Selenium::WebDriver.for :chrome,
+        capabilities: Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => { detach: true })
+      driver.manage.window.maximize
+      driver.manage.timeouts.implicit_wait = 10
+      driver
+    end
   end
 
   def open_welcome_page
@@ -41,8 +53,8 @@ class OsakaOpas
   end
 
   def login
-    driver.find_element(:id, 'txtRiyoshaCode').send_keys(@user.user_number)
-    driver.find_element(:id, 'txtPassWord').send_keys(@user.password)
+    driver.find_element(:id, 'txtRiyoshaCode').send_keys(user.user_number)
+    driver.find_element(:id, 'txtPassWord').send_keys(user.decrypted_password)
     driver.find_element(:class, 'loginbtn').find_element(:tag_name, 'a').click
     sleep 2
   end
@@ -58,14 +70,14 @@ class OsakaOpas
   end
 
   def category_selection(key)
-    id = category_ids_table[@sports_type][key]
+    id = category_ids_table[automation_setting.sports_type.to_s][key]
     driver.find_element(:id, id).click
     sleep 2
   end
 
   def facility_selection
-    @facility_types.each do |facility_type|
-      facilities_table[@sports_type][facility_type].each do |id|
+    automation_setting.facility_types.split(',').each do |facility_type|
+      facilities_table[automation_setting.sports_type.to_s][facility_type].each do |id|
         driver.find_element(:id, id).find_element(:xpath, './../../..').click
         sleep 1
       end
