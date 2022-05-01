@@ -19,9 +19,9 @@ class OsakaCityOpasOperator
     category_selection(:category_id)
     category_selection(:sub_category_id)
     facility_selection
-    driver.execute_script("alert('処理が正常に終了しました。')")
+    driver.execute_script("alert('正常に終了しました。')")
   rescue => ex
-    driver.execute_script("alert('処理の途中でエラーが発生しました。再度やり直してください。')")
+    driver.execute_script("alert('エラーが発生しました。再度処理をやり直してください。')")
   end
 
   private
@@ -40,7 +40,7 @@ class OsakaCityOpasOperator
   def driver
     @driver ||= begin
       driver = Selenium::WebDriver.for :chrome,
-        capabilities: Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => { detach: true })
+        capabilities: Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => { detach: true, excludeSwitches: ['enable-automation'] })
       driver.manage.window.maximize
       driver.manage.timeouts.implicit_wait = 10
       driver

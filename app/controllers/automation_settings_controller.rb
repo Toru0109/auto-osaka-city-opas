@@ -23,10 +23,8 @@ class AutomationSettingsController < ApplicationController
   end
 
   def destroy
-    if @automation_setting
-      @automation_setting.destroy
-      render :index
-    end
+    @automation_setting.destroy
+    render status: :ok
   end
 
   def execute

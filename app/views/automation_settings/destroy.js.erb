@@ -1,0 +1,12 @@
+<% if response.status === 200 && @automation_setting %>
+  var row = document.getElementById("automation_setting_row_<%= @automation_setting.id %>");
+  var tbody = row.closest('tbody[id="automation_settings_tbody"]')
+
+  row.remove();
+  if (tbody.childElementCount <= 0) {
+    var insertRow = document.getElementById('no-data-row');
+    tbody.appendChild(insertRow);
+    // ページネーションの値を削除
+    document.querySelector("li[class='paginate_button page-item active']").remove();
+  }
+<% end %>
