@@ -24,7 +24,7 @@
   </td>
   <td>
     <div class="table-actions">
-      <%= link_to automation_setting_path(automation_setting.id), method: :delete, data: { confirm: "削除してよろしいですか？" }, id: "delete-link-#{automation_setting.id}", remote: true, "data-color": "#e95959" do %>
+      <%= link_to 'javascript:void(0);', onclick: "confirmDelete(#{automation_setting.id});", "data-color": "#e95959" do %>
         <i class="icon-copy dw dw-delete-3"></i>
       <% end %>
     </div>

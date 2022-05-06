@@ -1,9 +1,18 @@
 if (<%= response.status %> === 202) {
-  alert('処理を開始中です。ブラウザを開いたままお待ちください。');
+  Swal.fire({
+    icon: 'success',
+    text: '処理を開始中です。ブラウザを開いたままお待ちください。'
+  })
 }
 if (<%= response.status %> === 404) {
-  alert('処理の開始に失敗しました。');
+  Swal.fire({
+    icon: 'error',
+    text: '処理の開始に失敗しました。'
+  })
 }
 if (<%= response.status %> >= 500) {
-  alert('予期せぬエラーが発生しました。');
+  Swal.fire({
+    icon: 'error',
+    text: '予期せぬエラーが発生しました。'
+  })
 }

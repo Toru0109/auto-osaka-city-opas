@@ -24,7 +24,7 @@ class AutomationSettingsController < ApplicationController
 
   def destroy
     @automation_setting.destroy
-    render status: :ok
+    head :ok
   end
 
   def execute

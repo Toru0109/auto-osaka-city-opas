@@ -2,8 +2,6 @@
 <html>
   <head>
     <title>AutoOsakaCityOpas</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'load' %>
@@ -28,6 +26,7 @@
     ======================================================== -->
     <%= stylesheet_link_tag 'amoeba', :media => "all" %>
     <%= yield :css %>
+    <%= javascript_include_tag '//cdn.jsdelivr.net/npm/sweetalert2@11' %>
   </head>
   <body>
     <%= render partial: 'shared/navbar' %>

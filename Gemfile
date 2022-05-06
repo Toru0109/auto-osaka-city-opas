@@ -31,6 +31,7 @@ gem 'rails-i18n', '~> 5.1'
 
 # JavaScriptの圧縮で使用
 gem 'terser', '~> 1.1', '>= 1.1.1'
+gem "jquery-rails"
 
 # sidekiq
 gem 'sidekiq', '~> 5.2.8'
