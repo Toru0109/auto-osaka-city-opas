@@ -23,5 +23,5 @@
       <span class="fas fa-eye" onclick="togglePassword(this);"></span>
     </div>
   <% end %>
-  <%= f.submit (sign_up ? '登録' : 'ログイン'), class: "btn btn-primary #{id}-link" %>
+  <%= f.submit (sign_up ? '登録' : 'ログイン'), class: "btn btn-primary #{id}-link", data: { disable_with: false } %>
 <% end %>
