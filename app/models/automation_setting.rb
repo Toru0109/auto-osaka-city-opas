@@ -1,6 +1,9 @@
 class AutomationSetting < ApplicationRecord
   belongs_to :user
 
+  validates_length_of :name, maximum: 30, too_long: "は30文字以内で入力してください。"
+  validates_inclusion_of :sports_type, :in => 1..43, message: 'が不正です。'
+
   # sports_type
   VOLLEY_BALL = '1'
   SOFT_VOLLEY_BALL = '2'
@@ -122,7 +125,7 @@ class AutomationSetting < ApplicationRecord
   ZETTO_HIGASHINARI_SPORTS_CENTER = '20'
   ZETTO_IKUNO_SPORTS_CENTER = '21'
   ASAHI_SPORTS_CENTER = '22'
-  JOTO_SPORTS_CENTER= '23'
+  JOTO_SPORTS_CENTER = '23'
   TSURUMI_SPORTS_CENTER = '24'
   SUMIYOSHI_SPORTS_CENTER = '25'
   FITTNESS_21_EAST_SUMIYOSHI_SPORTS_CENTER = '26'
@@ -134,10 +137,45 @@ class AutomationSetting < ApplicationRecord
   JYUSO_PARK_OFFICE = '32'
   TSURUMIRYOKUCHI_PARK_OFFICE = '33'
 
-  { AutomationSetting::TENNIS =>
-    {
-      AutomationSetting::CHIDORI_GYMNASIUM => '千鳥橋体育館'
-    }
+  TENNIS_FACILITIES = {
+    CHIDORI_GYMNASIUM => '千島体育館',
+    FITTNESS_21_EAST_YODOGAWA_GYMNASIUM => 'フィットネス２１東淀川体育館',
+    TSURUMIRYOKUCHI => '鶴見緑地',
+    NAGAI_PARK => '長居公園',
+    NANKO_CENTRAL_PARK => '南港中央公園',
+    UTSUBO_PARK => '靭公園',
+    NORTH_SPORTS_CENTER => '北スポーツセンター',
+    MIYAKOJIMA_SPORTS_CENTER => '都島スポーツセンター',
+    FUKUSHIMA_SPORTS_CENTER => '福島スポーツセンター',
+    MEIJI_SPORTSPURAZA_KONOHANA_SPORTS_CENTER => '明治スポーツプラザ此花スポーツセンター',
+    CENTRAL_SPORTS_CENTER => '中央スポーツセンター',
+    WEST_SPORTS_CENTER => '西スポーツセンター',
+    PORT_SPORTS_CENTER => '港スポーツセンター',
+    TAISHO_SPORTS_CENTER => '大正スポーツセンター',
+    TENNOJI_SPORTS_CENTER => '天王寺スポーツセンター',
+    MEIJI_SPORTSPURAZA_NANIWA_SPORTS_CENTER => '明治スポーツプラザ浪速スポーツセンター',
+    WEST_YODOGAWA_SPORTS_CENTER => '西淀川スポーツセンター',
+    YODOGAWA_SPORTS_CENTER => '淀川スポーツセンター',
+    EAST_YODOGAWA_SPORTS_CENTER => '東淀川スポーツセンター',
+    ZETTO_HIGASHINARI_SPORTS_CENTER => 'ゼット東成スポーツセンター',
+    ZETTO_IKUNO_SPORTS_CENTER => 'ゼット生野スポーツセンター',
+    ASAHI_SPORTS_CENTER => '旭スポーツセンター',
+    JOTO_SPORTS_CENTER => '城東スポーツセンター',
+    TSURUMI_SPORTS_CENTER => '鶴見スポーツセンター',
+    SUMIYOSHI_SPORTS_CENTER => '住吉スポーツセンター',
+    FITTNESS_21_EAST_SUMIYOSHI_SPORTS_CENTER => 'フィットネス２１東住吉スポーツセンター',
+    HST_HIRANO_SPORTS_CENTER => 'ＨＳＴ平野スポーツセンター',
+    HST_NISHINARI_SPORTS_CENTER => 'ＨＳＴ西成スポーツセンター',
+    NAGAI_PARK_OFFICE => '長居公園事務所',
+    OGIMACHI_PARK_OFFICE => '扇町公園事務所',
+    SANADAYAMA_PARK_OFFICE => '真田山公園事務所',
+    JYUSO_PARK_OFFICE => '十三公園事務所',
+    TSURUMIRYOKUCHI_PARK_OFFICE => '鶴見緑地公園事務所',
+  }
+
+  FACILITY_TYPES = {
+    SOFT_TENNIS => TENNIS_FACILITIES,
+    TENNIS => TENNIS_FACILITIES
   }
 
   def sports_name

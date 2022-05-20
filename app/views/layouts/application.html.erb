@@ -3,8 +3,8 @@
   <head>
     <title>AutoOsakaCityOpas</title>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'load' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'load' %>
     <%= render partial: 'shared/meta' %>
 		<%= favicon_link_tag('favicon.ico') %>
 
@@ -28,8 +28,23 @@
 			gtag('config', 'UA-119386393-1');
 		</script>
     <%= javascript_include_tag '//cdn.jsdelivr.net/npm/sweetalert2@11' %>
+
+		<%= stylesheet_link_tag 'https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css' %>
   </head>
   <body>
     <%= yield %>
   </body>
 </html>
+
+<script>
+	<% if flash[:success] %>
+		Swal.fire({ icon: 'success', text: "<%= flash[:success] %>" });
+	<% end %>
+
+	<% if flash[:error] %>
+		Swal.fire({
+			icon: 'error',
+			html: 'エラーが発生しました。<br>' + "<%== flash[:error].map { |message| "<li style='text-align: left;'>#{message}</li>" }.join %>"
+		});
+	<% end %>
+</script>

@@ -1,0 +1,17 @@
+<%= form_with form_hash.merge(local: true, html: { onsubmit: "return checkAutomationSettingValues();" }) do |f| %>
+  <div class="form-group">
+    <label class="form-label">名称</label><span class="badge badge-danger">必須</span>
+    <%= f.text_field :name, class: 'form-control', maxlength: '30' %>
+  </div>
+  <div class="form-group">
+    <label class="form-label">スポーツ</label><span class="badge badge-danger">必須</span>
+    <%= f.select :sports_type, AutomationSetting::SPORTS_NAMES, { include_blank: '選択してください', disabled: (1..5).to_a+(8..43).to_a.map(&:to_s) }, { class: "form-control", onchange: 'getFacilityTypes(event);' } %>
+  </div>
+  <div class="form-group">
+    <label class="form-label">施設</label><span class="badge badge-danger">必須</span>
+    <%= f.select :facility_types, [], { include_hidden: false }, { class: "form-control", multiple: "multiple" } %>
+  </div>
+  <div>
+    <%= f.submit button_name, class: "btn btn-primary", data: { disable_with: false } %>
+  </div>
+<% end %>

@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* multiple-select調整用 */
+.ms-choice {
+  border: none !important;
+  height: 100% !important;
+}
+.ms-parent{
+  padding: 0 !important;
+}
+.ms-choice > span {
+  padding-top: 10px;
+}
+
+.ms-drop ul>li:not(.ms-select-all) label span{
+padding-left: 10px;
+}
+
+.ms-drop ul>li.selected{
+  background-color: #d8e7fd;
+}
+
 .side-bar-logo {
   width: 50px;
   height: 50px;
@@ -21,4 +41,12 @@
   width: 60px !important;
   border: initial;
   background: #1b00ff;
+}
+
+.form-label {
+  margin-right: 6px;
+}
+
+span.badge.badge-danger {
+  padding: 2px;
 }

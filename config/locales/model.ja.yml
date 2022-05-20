@@ -6,3 +6,6 @@ ja:
           user_number: 利用者番号
           password: パスワード
           password_confirmation: パスワード（確認用）
+        automation_setting:
+          name: 名称
+          sports_type: スポーツ

@@ -1,0 +1,92 @@
+const confirmDelete = (id) => {
+  Swal.fire({
+    text: "削除してよろしいですか？",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'OK',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'キャンセル'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteAutomationSetting(id);
+    }
+  })
+}
+
+const deleteAutomationSetting = (id) => {
+  $.ajax({
+    type: 'DELETE',
+    url: `/automation_settings/${id}`,
+    headers: {
+      'X-CSRF-Token': getCsrfToken()
+    },
+  }).done(function() {
+    const row = $("#automation_setting_row_"+id);
+    row.remove();
+    insertNoDataRow(row);
+    Swal.fire({ icon: 'success', text: "削除しました。" })
+  });
+}
+
+const insertNoDataRow = (row) => {
+  const tbody = row.closest('tbody[id="automation_settings_tbody"]');
+  if (tbody.children().length > 0) { return; }
+
+  tbody.append($('#no-data-row'));
+  // ページネーションの値を削除
+  //document.querySelector("li[class='paginate_button page-item active']").remove();
+}
+
+const facilityTypes = <%= AutomationSetting::FACILITY_TYPES.to_json %>;
+const getFacilityTypes = (event) => {
+  let selectCondition;
+  const sportsTypeValue = event.target.value;
+  const select = $('#automation_setting_facility_types');
+  select.empty();
+
+  if (sportsTypeValue === '') {
+    selectCondition = 'disable';
+  } else {
+    $.each(facilityTypes[sportsTypeValue], function(value, name) {
+      select.append($('<option>').html(name).val(value))
+    })
+    selectCondition = 'enable';
+  }
+
+  select.multipleSelect('refresh');
+  select.multipleSelect(selectCondition);
+}
+
+const appendSelectOptions = (facilityTypesSelect) => {
+  const facilityTypes = <%= AutomationSetting::FACILITY_TYPES.to_json %>;
+  const sportsTypeValue = $('#automation_setting_sports_type').val();
+
+  $.each(facilityTypes[sportsTypeValue], function(value, name) {
+    facilityTypesSelect.append($('<option>').html(name).val(value));
+  })
+}
+
+const checkAutomationSettingValues = () => {
+  const nameValue = $('#automation_setting_name').val();
+  if (nameValue === '') {
+    Swal.fire({ icon: 'error', text: '名称を入力してください。' });
+    return false;
+  }
+  if (nameValue.length > 30) {
+    Swal.fire({ icon: 'error', text: '名称は30文字以内で入力してください。' });
+    return false;
+  }
+
+  if ($('#automation_setting_sports_type').val() === '') {
+    Swal.fire({ icon: 'error', text: 'スポーツを入力してください。' });
+    return false;
+  }
+
+  if ($('#automation_setting_facility_types').val().length <= 0) {
+    Swal.fire({ icon: 'error', text: '施設を入力してください。' });
+    return false;
+  }
+
+  return true;
+}
