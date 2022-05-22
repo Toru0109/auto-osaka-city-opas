@@ -38,7 +38,12 @@
 
 <script>
 	<% if flash[:success] %>
-		Swal.fire({ icon: 'success', text: "<%= flash[:success] %>" });
+		Swal.fire({
+			icon: 'success',
+			text: "<%= flash[:success] %>",
+			showConfirmButton: false,
+			timer: 2000
+		});
 	<% end %>
 
 	<% if flash[:error] %>

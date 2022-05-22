@@ -181,4 +181,9 @@ class AutomationSetting < ApplicationRecord
   def sports_name
     SPORTS_NAMES.rassoc(sports_type.to_s)[0]
   end
+
+  def facility_names
+    facilities = FACILITY_TYPES[sports_type.to_s]
+    facility_types.split(',').map { |facility_type| facilities[facility_type] }
+  end
 end

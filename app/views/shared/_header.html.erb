@@ -7,7 +7,7 @@
 				<%= form_with url: automation_settings_path, local: true, method: 'get', html: { style: 'padding: 0px;margin: 0px;' } do |f| %>
 					<div class="form-group mb-0">
 						<!--<i class="dw dw-search2 search-icon"></i>-->
-						<%= f.text_field :search_keyword, class: 'form-control search-input', placeholder: '名称を入力' %>
+						<%= f.text_field :search_keyword, class: 'form-control search-input', placeholder: '名称を入力', value: search_keyword %>
 						<div class="dropdown">
 
 							<!--<a class="search-button dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">-->
@@ -49,6 +49,7 @@
 		<% end %>
 	</div>
 	<div class="header-right">
+		<!--
 		<div class="dashboard-setting user-notification">
 			<div class="dropdown">
 				<a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
@@ -56,6 +57,7 @@
 				</a>
 			</div>
 		</div>
+		-->
 		<div class="user-notification">
 			<div class="dropdown">
 				<!-- 通知マーク -->
@@ -126,8 +128,10 @@
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 					<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> プロフィール</a>
+					<!--
 					<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> 設定</a>
 					<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> ヘルプ</a>
+					-->
 					<%= link_to 'javascript:void(0);', class: "dropdown-item", onclick: 'confirmLogOut();' do %>
 						<i class="dw dw-logout"></i> ログアウト
 					<% end %>

@@ -10,6 +10,7 @@ class AutomationSettingsController < ApplicationController
 
     if params[:search_keyword].present?
       @automation_settings = @automation_settings.where("name LIKE ?", "%#{params[:search_keyword]}%")
+      @search_keyword = params[:search_keyword]
     end
   end
 

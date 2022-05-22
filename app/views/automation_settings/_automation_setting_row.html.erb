@@ -11,7 +11,9 @@
   <td>
     <%= automation_setting.sports_name %>
   </td>
-  <td>靭テニスコート</td>
+  <td>
+    <%= automation_setting.facility_names.join('、') %>
+  </td>
   <td>
     <%= button_to "処理開始", execute_path, remote: true, params: { id: automation_setting.id }, class: "btn btn-primary btn-sm", data: { disable_with: "処理中..." } %>
   </td>

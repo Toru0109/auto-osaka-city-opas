@@ -922,6 +922,12 @@
     <%== @automation_setting.facility_types.split(',').to_json %>
   );
   $('select').multipleSelect({
+		onFocus: function (event) {
+			event.target.parentNode.classList.add('focus-item');
+		},
+		onBlur: function (event) {
+			event.target.parentNode.classList.remove('focus-item');
+		},
 		formatSelectAll: function () {
       return '全て選択';
     },
