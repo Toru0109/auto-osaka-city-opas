@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(
   tops.css
   amoeba.css
   automation_settings.css
+  users.css
   vendor/*
   vendors/*
   src/*

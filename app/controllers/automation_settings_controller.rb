@@ -4,6 +4,7 @@ class AutomationSettingsController < ApplicationController
   before_action :set_automation_setting, only: [:edit, :update, :destroy, :execute]
 
   def index
+    @search_keyword = ''
     @automation_settings = AutomationSetting
       .where(user_id: @current_user.id)
       .order(:id)

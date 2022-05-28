@@ -1,0 +1,49 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'users' %>
+<% end %>
+
+<div class="mobile-menu-overlay"></div>
+
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+
+      <div class="pd-20 card-box mb-30">
+        <div class="clearfix">
+          <div class="pull-left">
+            <h4 class="text-blue h4">ユーザー情報編集</h4>
+          </div>
+        </div>
+        <%= form_with model: current_user, url: users_update_path, method: :put, local: true, html: { onsubmit: "return checkUserValues();" } do |f| %>
+          <div class="form-group">
+            <label>ユーザー名</label>
+            <%= f.text_field :user_name, id: 'user_name', class: 'form-control', maxlength: 15 %>
+          </div>
+          <div class="form-group">
+            <label>利用者番号</label>
+            <%= f.text_field :user_number, id: 'user_number', class: 'form-control', maxlength: 8 %>
+          </div>
+          <div class="form-group password-division">
+            <label>パスワード</label>
+            <%= f.password_field :password, id: 'password', class: 'form-control', maxlength: 8  %>
+            <span class="fas fa-eye password-confirm-eye" onclick="togglePassword(this);"></span>
+          </div>
+          <div class="form-group password-division">
+            <label>パスワード（確認用）</label>
+            <%= f.password_field :password_confirmation, id: 'password_confirmation', class: 'form-control', maxlength: 8  %>
+            <span class="fas fa-eye password-confirm-eye" onclick="togglePassword(this);"></span>
+          </div>
+          <div>
+            <%= f.submit "更新", class: "btn btn-primary", data: { disable_with: false } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- js -->
+<%= javascript_include_tag 'vendors/scripts/core' %>
+<%= javascript_include_tag 'vendors/scripts/script.min' %>
+<%= javascript_include_tag 'vendors/scripts/process' %>
+<%= javascript_include_tag 'vendors/scripts/layout-settings' %>

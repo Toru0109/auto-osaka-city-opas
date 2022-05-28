@@ -2,7 +2,7 @@
 	<div class="header-left">
 		<div class="menu-icon dw dw-menu"></div>
 		<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
-		<% if show_search %>
+		<% if search_keyword %>
 			<div class="header-search">
 				<%= form_with url: automation_settings_path, local: true, method: 'get', html: { style: 'padding: 0px;margin: 0px;' } do |f| %>
 					<div class="form-group mb-0">

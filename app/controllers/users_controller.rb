@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
   def create
-    if User.exists?(user_number: params[:user][:user_number])
-      flash[:danger] = '会員登録に失敗しました。'
-      return redirect_to root_path
-    end
-
     user = User.new(user_params)
     if user.save
       flash[:success] = '会員登録が完了しました。'
@@ -17,6 +12,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    user = User.find(session[:user_id])
+    if user.update_attributes(user_params)
+      flash[:success] = 'ユーザー情報を更新しました。'
+      redirect_to automation_settings_path
+    else
+      flash.now[:error] = user.errors.full_messages
+      render :edit
+    end
   end
 
   private

@@ -25,10 +25,6 @@
   padding-top: 20px;
 }
 
-.password-input {
-  margin-right: -40px;
-}
-
 @media screen and (max-width: 480px) {
   .hero-container {
     h1 {
@@ -67,4 +63,20 @@
   .sign-in-form {
     width: 260px;
   }
+}
+
+.password-division {
+  position: relative;
+}
+
+#user_password,
+#user_password_confirmation,
+#session_password {
+  padding-right: 40px;
+}
+
+.password-confirm-eye {
+  position: absolute;
+  top: 8px;
+  right: 18px;
 }
