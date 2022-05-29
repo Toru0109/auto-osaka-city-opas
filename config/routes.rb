@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
-  get '/users/edit', to: 'users#edit'
-  put '/users/update', to: 'users#update'
+  get '/user/edit', to: 'users#edit'
+  put '/user/update', to: 'users#update'
+  delete '/user/destroy', to: 'users#destroy'
 
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'

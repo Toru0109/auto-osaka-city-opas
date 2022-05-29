@@ -153,3 +153,28 @@ const togglePassword = (eyeIcon) => {
   passwordInput.type = type;
   eyeIcon.classList.replace(beforeClass, afterClass);
 }
+
+const confirmAccountDeletion = () => {
+  Swal.fire({
+    text: "アカウントを削除します。よろしいですか？",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '削除',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'キャンセル'
+  }).then((result) => {
+    if (!result.isConfirmed) { return; }
+    deleteAccount();
+  })
+}
+
+const deleteAccount = () => {
+  $.ajax({
+    type: 'DELETE',
+    url: '/user/destroy',
+    headers: {
+      'X-CSRF-Token': getCsrfToken()
+    }
+  });
+}
