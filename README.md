@@ -49,8 +49,22 @@
  def update_password
    user = User.find(session[:user_id])
    if user.decrypted_password != params[:original_password]
-     flash.now[:error] = '現在のパスワードが間違っています。'
+      flash.now[:error] = '現在のパスワードが間違っています。'
      render :edit_password and return
+   end
+   
+   if params[:password] != params[:password_confirmation]
+     flash.now[:error] = 'パスワードがパスワード(確認用)と一致しません。'
+     render :edit_password and return
+   end
+   
+   user.password = params[:password]
+   if user.save
+     flash[:success] = 'パスワードを更新しました。'
+     redirect_to automation_settings_path
+   else
+     flash.now[:error] = user.errors.full_messages
+     render :edit_password
    end
  end
  ```
