@@ -38,3 +38,19 @@
 * 「ユーザー情報編集」画面からパスワード更新機能を除外する
 * 疑問点
   * 新しいパスワードと新しいパスワード(確認用)はJS側でチェックすべき?コントローラ側でのみチェック?(他サービスはどうなっているか) 
+ 
+ ```
+ class UsersController < ApplicationController
+   before_action :authenticate_user, :only => [:edit_password, :update_password]
+ 
+ def edit_password
+ end
+ 
+ def update_password
+   user = User.find(session[:user_id])
+   if user.decrypted_password != params[:original_password]
+     flash.now[:error] = '現在のパスワードが間違っています。'
+     render :edit_password and return
+   end
+ end
+ ```
