@@ -50,7 +50,7 @@
    user = User.find(session[:user_id])
    if user.decrypted_password != params[:original_password]
       flash.now[:error] = '現在のパスワードが間違っています。'
-     render :edit_password and return
+      render :edit_password and return
    end
    
    if params[:password] != params[:password_confirmation]
