@@ -27,3 +27,13 @@
   * https://hatchful.shopify.com/ja/#testimonials
 * ロゴは下記サイトで作成  
   * https://www.canva.com/design/DAE4VVXfRdU/mpRvnxvGPg0uik3PkDjUbw/edit
+
+# TODO
+## パスワード更新専用の画面作成
+* 画面からは下記の入力を必須とする
+ * 現在のパスワード
+ * 新しいパスワード
+ * 新しいパスワード(確認用)
+* 全て目のアイコンで入力内容を確認できるようにする
+* 疑問点
+ * 新しいパスワードと新しいパスワード(確認用)はJS側でチェックすべき?(他サービスはどうなっているか) 
