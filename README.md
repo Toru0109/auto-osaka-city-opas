@@ -40,6 +40,8 @@
   * 新しいパスワードと新しいパスワード(確認用)はJS側でチェックすべき?コントローラ側でのみチェック?(他サービスはどうなっているか) 
  
  ```
+ [app/controllers/users_controller.rb]
+ 
  class UsersController < ApplicationController
    before_action :authenticate_user, :only => [:edit_password, :update_password]
  
@@ -67,4 +69,37 @@
      render :edit_password
    end
  end
+ ```
+ 
+ ## チェックボックスで一括で自動設定を削除
+ ```
+ [app/automation_settings/index.html.erb]
+ 
+ const confirmDeletion = () => {
+    Swal.fire({
+    text: "選択した自動設定を削除します。よろしいですか？",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '削除',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'キャンセル'
+  }).then((result) => {
+    if (!result.isConfirmed) { return; }
+    deleteAutomationSettings();
+  })
+ }
+ 
+ const deleteAutomationSettings = () => {
+   const checkedCheckBoxes = document.querySelecotrAll("input[class='automation_setting_checkbox']:checked");
+   const deleteAutomationSettingsIds = Array.from(checkedCheckBoxes).map((checkBox) => {
+     return checkBox.value;
+   });
+   
+   const form = document.querySelector("form[id='']");
+   const automationSettingsIdInput = form.querySelector();
+   
+   automationSettingsIdInput.value = deleteAutomationSettingsIds;
+   form.submit;
+ }
  ```
