@@ -27,3 +27,79 @@
   * https://hatchful.shopify.com/ja/#testimonials
 * ロゴは下記サイトで作成  
   * https://www.canva.com/design/DAE4VVXfRdU/mpRvnxvGPg0uik3PkDjUbw/edit
+
+# TODO
+## パスワード更新専用の画面作成
+* 画面からは下記の入力を必須とする
+  * 現在のパスワード
+  * 新しいパスワード
+  * 新しいパスワード(確認用)
+* 全て目のアイコンで入力内容を確認とする
+* 「ユーザー情報編集」画面からパスワード更新機能を除外する
+* 疑問点
+  * 新しいパスワードと新しいパスワード(確認用)はJS側でチェックすべき?コントローラ側でのみチェック?(他サービスはどうなっているか) 
+ 
+ ```
+ [app/controllers/users_controller.rb]
+ 
+ class UsersController < ApplicationController
+   before_action :authenticate_user, :only => [:edit_password, :update_password]
+ 
+ def edit_password
+ end
+ 
+ def update_password
+   user = User.find(session[:user_id])
+   if user.decrypted_password != params[:original_password]
+      flash.now[:error] = '現在のパスワードが間違っています。'
+      render :edit_password and return
+   end
+   
+   if params[:password] != params[:password_confirmation]
+     flash.now[:error] = 'パスワードがパスワード(確認用)と一致しません。'
+     render :edit_password and return
+   end
+   
+   user.password = params[:password]
+   if user.save
+     flash[:success] = 'パスワードを更新しました。'
+     redirect_to automation_settings_path
+   else
+     flash.now[:error] = user.errors.full_messages
+     render :edit_password
+   end
+ end
+ ```
+ 
+ ## チェックボックスで一括で自動設定を削除
+ ```
+ [app/automation_settings/index.html.erb]
+ 
+ const confirmDeletion = () => {
+    Swal.fire({
+    text: "選択した自動設定を削除します。よろしいですか？",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '削除',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'キャンセル'
+  }).then((result) => {
+    if (!result.isConfirmed) { return; }
+    deleteAutomationSettings();
+  })
+ }
+ 
+ const deleteAutomationSettings = () => {
+   const checkedCheckBoxes = document.querySelecotrAll("input[class='automation_setting_checkbox']:checked");
+   const deleteAutomationSettingsIds = Array.from(checkedCheckBoxes).map((checkBox) => {
+     return checkBox.value;
+   });
+   
+   const form = document.querySelector("form[id='']");
+   const automationSettingsIdInput = form.querySelector();
+   
+   automationSettingsIdInput.value = deleteAutomationSettingsIds;
+   form.submit;
+ }
+ ```
