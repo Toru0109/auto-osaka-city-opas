@@ -132,7 +132,7 @@
 					<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> 設定</a>
 					<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> ヘルプ</a>
 					-->
-					<%= link_to 'javascript:void(0);', class: "dropdown-item", onclick: 'confirmLogOut();' do %>
+					<%= link_to sign_out_path, method: :delete, class: "dropdown-item" do %>
 						<i class="dw dw-logout"></i> ログアウト
 					<% end %>
 				</div>

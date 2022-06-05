@@ -49,41 +49,18 @@ const isUserNumberValid = (userNumberId) => {
   return true;
 }
 
-const isPasswordValid = (passwordId) => {
+const isPasswordValid = (passwordId, labelName) => {
   const password = document.getElementById(passwordId).value;
   if (password.length <= 0) {
-    Swal.fire({ icon: 'error', text: 'パスワードを入力してください。' });
+    Swal.fire({ icon: 'error', text: `${labelName}を入力してください。` });
     return false;
   }
   if (password.length > 8) {
-    Swal.fire({ icon: 'error', text: 'パスワードは8文字以内で入力してください。' });
+    Swal.fire({ icon: 'error', text: `${labelName}は8文字以内で入力してください。` });
     return false;
   }
 
   return true;
-}
-
-const isPasswordConfirmationValid = (passwordConfirmationId) => {
-  const passwordConfirmation = document.getElementById(passwordConfirmationId).value;
-  if (passwordConfirmation.length <= 0) {
-    Swal.fire({ icon: 'error', text: 'パスワード（確認用）を入力してください。' });
-    return false;
-  }
-  if (passwordConfirmation.length > 8) {
-    Swal.fire({ icon: 'error', text: 'パスワード（確認用）は8文字以内で入力してください。' });
-    return false;
-  }
-
-  return true;
-}
-
-const isPasswordEqualToPasswordConfirmation = (passwordId, passwordConfirmationId) => {
-  const password = document.getElementById(passwordId).value;
-  const passwordConfirmation = document.getElementById(passwordConfirmationId).value;
-  if (password === passwordConfirmation) { return true; }
-
-  Swal.fire({ icon: 'error', text: 'パスワードが確認用パスワードと一致しません。' });
-  return false;
 }
 
 const checkSignUp = () => {
@@ -91,13 +68,9 @@ const checkSignUp = () => {
 
   if (!isUserNumberValid('user_user_number')) { return false; }
 
-  if (!isPasswordValid('user_password')) { return false; }
+  if (!isPasswordValid('user_password', 'パスワード')) { return false; }
 
-  if (!isPasswordConfirmationValid('user_password_confirmation')) { return false; }
-
-  if (!isPasswordEqualToPasswordConfirmation('user_password', 'user_password_confirmation')) {
-    return false;
-  }
+  if (!isPasswordValid('user_password_confirmation', 'パスワード（確認用）')) { return false; }
 
   return true;
 }
@@ -105,38 +78,13 @@ const checkSignUp = () => {
 const checkSignIn = () => {
   if (!isUserNumberValid('session_user_number')) { return false; }
 
-  if (!isPasswordValid('session_password')) { return false; }
+  if (!isPasswordValid('session_password', 'パスワード')) { return false; }
 
   return true;
 }
 
 const getCsrfToken = () => {
   return document.querySelector('meta[name="csrf-token"]').content;
-}
-
-const confirmLogOut = () => {
-  Swal.fire({
-    text: "ログアウトしますか？",
-    icon: 'warning',
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'OK',
-    showCancelButton: true,
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'キャンセル'
-  }).then((result) => {
-    if (!result.isConfirmed) { return; }
-    logOut();
-  })
-}
-
-const logOut = () => {
-  $.ajax({
-    type: 'DELETE',
-    url: '/sign_out',
-    headers: {
-      'X-CSRF-Token': getCsrfToken()
-    }
-  });
 }
 
 const togglePassword = (eyeIcon) => {

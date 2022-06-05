@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates_length_of :user_name, maximum: 15, too_long: "は15文字以内で入力してください。"
   validates_length_of :user_number, maximum: 8, too_long: "は8文字以内で入力してください。"
   validates_confirmation_of :password, message: "がパスワードと一致していません。"
-  before_create :substitute_encrypted_password
+  before_save :substitute_encrypted_password
 
   def decrypted_password
     key_len = ActiveSupport::MessageEncryptor.key_len
@@ -17,6 +17,8 @@ class User < ApplicationRecord
   private
 
   def substitute_encrypted_password
+    return unless password_changed?
+
     key_len = ActiveSupport::MessageEncryptor.key_len
     secret = Rails.application.key_generator.generate_key(user_number, key_len)
     encryptor = ActiveSupport::MessageEncryptor.new(secret)

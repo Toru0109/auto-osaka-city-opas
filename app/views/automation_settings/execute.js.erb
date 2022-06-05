@@ -1,7 +1,9 @@
 if (<%= response.status %> === 202) {
   Swal.fire({
     icon: 'success',
-    text: '処理を開始中です。ブラウザを開いたままお待ちください。'
+    text: '処理を開始中です。ブラウザを開いたままお待ちください。',
+    showConfirmButton: false,
+    timer: 2000
   })
 }
 if (<%= response.status %> === 404) {

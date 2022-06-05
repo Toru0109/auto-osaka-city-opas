@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
   delete '/user/destroy', to: 'users#destroy'
+  get '/change_password', to: 'users#change_password'
+  put '/update_password', to: 'users#update_password'
 
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'

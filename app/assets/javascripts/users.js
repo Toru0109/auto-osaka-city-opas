@@ -3,11 +3,21 @@ const checkUserValues = () => {
 
   if (!isUserNumberValid('user_number')) { return false; }
 
-  if (!isPasswordValid('password')) { return false; }
+  return true;
+}
 
-  if (!isPasswordConfirmationValid('password_confirmation')) { return false; }
+const checkPasswords = () => {
+  if (!isPasswordValid('current_password', '現在のパスワード')) {
+    return false;
+  }
 
-  if (!isPasswordEqualToPasswordConfirmation('password', 'password_confirmation')) { return false; }
+  if (!isPasswordValid('new_password', '新しいパスワード')) {
+    return false;
+  }
+
+  if (!isPasswordValid('new_password_confirmation', '新しいパスワード（確認用）')) {
+    return false;
+  }
 
   return true;
 }

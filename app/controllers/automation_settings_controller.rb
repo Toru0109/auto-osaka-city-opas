@@ -1,5 +1,5 @@
 class AutomationSettingsController < ApplicationController
-  before_action :logged_in_user, only: [:index]
+  before_action :logged_in_user
   before_action :check_automation_setting_owner, only: [:edit]
   before_action :set_automation_setting, only: [:edit, :update, :destroy, :execute]
 
@@ -19,7 +19,6 @@ class AutomationSettingsController < ApplicationController
   end
 
   def show
-
   end
 
   def create
@@ -63,7 +62,7 @@ class AutomationSettingsController < ApplicationController
   def execute
     render status: :not_found and return unless @automation_setting
 
-    OsakaCityOpasOperateWorker.perform_at(3.second, session[:user_id], params[:id])
+    OsakaCityOpasOperateWorker.perform_at(3.second, @automation_setting.user_id, @automation_setting.id)
     render status: :accepted
   rescue => ex
     p '==============='

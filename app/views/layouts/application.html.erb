@@ -53,7 +53,7 @@
 	<% if flash[:error] %>
 		Swal.fire({
 			icon: 'error',
-			html: 'エラーが発生しました。<br>' + "<%== flash[:error].map { |message| "<li style='text-align: left;'>#{message}</li>" }.join %>"
+			html: 'エラーが発生しました。<br>' + "<%== Array(flash[:error]).map { |message| "<li style='text-align: left;'>#{message}</li>" }.join %>"
 		});
 	<% end %>
 </script>
