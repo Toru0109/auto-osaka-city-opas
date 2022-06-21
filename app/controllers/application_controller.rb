@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     return if current_user
 
-    flash[:danger] = 'ログインしてください。'
+    flash[:error] = 'ログインしてください。'
     redirect_to root_path
   end
 end

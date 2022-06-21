@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to automation_settings_path
     else
-      flash[:danger] = '利用者番号またはパスワードが間違っています。'
+      flash[:error] = '利用者番号またはパスワードが間違っています。'
       redirect_to root_path
     end
   end

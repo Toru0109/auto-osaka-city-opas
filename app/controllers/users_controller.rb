@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def create
     if user_params[:password] != user_params[:password_confirmation]
-      flash[:danger] = 'パスワードがパスワード（確認用）と一致しません。'
+      flash[:error] = 'パスワードがパスワード（確認用）と一致しません。'
       redirect_to root_path and return
     end
 
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to automation_settings_path
     else
-      flash[:danger] = user.errors.full_messages
+      flash[:error] = user.errors.full_messages
       redirect_to root_path
     end
   end

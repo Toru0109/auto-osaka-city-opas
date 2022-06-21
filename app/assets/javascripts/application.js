@@ -106,7 +106,6 @@ const confirmAccountDeletion = () => {
   Swal.fire({
     text: "アカウントを削除します。よろしいですか？",
     icon: 'warning',
-    confirmButtonColor: '#3085d6',
     confirmButtonText: '削除',
     showCancelButton: true,
     cancelButtonColor: '#d33',

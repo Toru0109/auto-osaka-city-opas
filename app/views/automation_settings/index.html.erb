@@ -282,7 +282,7 @@
 <table style="display: none;">
 	<tbody>
 		<tr id="no-data-row" class="odd">
-			<td valign="top" colspan="6" class="dataTables_empty">
+			<td valign="top" colspan="6" class="dataTables_empty1">
 				No data available in table
 			</td>
 		</tr>
@@ -299,3 +299,11 @@
 <%= javascript_include_tag 'src/plugins/datatables/js/dataTables.responsive.min' %>
 <%= javascript_include_tag 'src/plugins/datatables/js/responsive.bootstrap4.min' %>
 <%= javascript_include_tag 'vendors/scripts/dashboard3' %>
+
+<script>
+$(function() {
+	const dataTablesEmpty = $("td[class='dataTables_empty']");
+	// 表示データが0件の場合に表示される「No data available in table」の削除
+	if (dataTablesEmpty) { dataTablesEmpty.parent().remove(); }
+});
+</script>
