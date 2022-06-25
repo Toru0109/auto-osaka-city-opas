@@ -12,6 +12,7 @@
 
 		<!-- Google Font -->
 		<%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap' %>
+
 		<!-- CSS -->
 		<%= stylesheet_link_tag 'vendors/styles/core', type: "text/css" %>
 		<%= stylesheet_link_tag 'vendors/styles/icon-font.min', type: "text/css" %>
@@ -40,7 +41,7 @@
   </body>
 </html>
 
-<script>
+<script type="text/javascript">
 	<% if flash[:success] %>
 		Swal.fire({
 			icon: 'success',

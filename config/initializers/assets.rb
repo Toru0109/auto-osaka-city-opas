@@ -23,4 +23,5 @@ Rails.application.config.assets.precompile += %w(
   vendors/*
   src/*
   js/*
+  icheck/*
 )

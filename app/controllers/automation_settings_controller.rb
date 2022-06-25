@@ -1,7 +1,7 @@
 class AutomationSettingsController < ApplicationController
   before_action :logged_in_user
   before_action :check_automation_setting_owner, only: [:edit]
-  before_action :set_automation_setting, only: [:edit, :update, :destroy, :execute]
+  before_action :set_automation_setting, only: [:edit, :update, :execute]
 
   def index
     @search_keyword = ''
@@ -55,8 +55,14 @@ class AutomationSettingsController < ApplicationController
   end
 
   def destroy
-    @automation_setting.destroy
-    head :ok
+    automation_settings = AutomationSetting.where(
+      id: params[:automation_setting_ids],
+      user_id: session[:user_id]
+    )
+
+    automation_settings.delete_all
+    flash[:success] = '設定を削除しました。'
+    redirect_to automation_settings_path
   end
 
   def execute

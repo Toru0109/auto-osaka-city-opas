@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   resources :automation_settings
   post '/execute', to: 'automation_settings#execute'
+  delete 'automation_settings/delete', to: 'automation_settings#destroy'
 end

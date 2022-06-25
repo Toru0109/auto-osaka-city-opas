@@ -1,4 +1,5 @@
 <tr id="automation_setting_row_<%= automation_setting.id %>">
+  <td><%= check_box_tag '', automation_setting.id, false, { class: 'automation_setting_checkbox', onclick: 'toggleBatchCheckBox();' } %></td>
   <td class="table-plus">
     <div class="name-avatar d-flex align-items-center">
       <div class="txt">
@@ -21,13 +22,6 @@
     <div class="table-actions">
       <%= link_to edit_automation_setting_path(automation_setting.id), "data-color": "#265ed7", data: { turbolinks: false } do %>
         <i class="icon-copy dw dw-edit2"></i>
-      <% end %>
-    </div>
-  </td>
-  <td>
-    <div class="table-actions">
-      <%= link_to 'javascript:void(0);', onclick: "confirmDelete(#{automation_setting.id});", "data-color": "#e95959" do %>
-        <i class="icon-copy dw dw-delete-3"></i>
       <% end %>
     </div>
   </td>

@@ -255,18 +255,27 @@
 		-->
 
 		<div class="card-box pb-10">
-			<div class="h5 pd-20 mb-0">
-				<h4 class="text-blue h4">自動設定一覧</h4>
+			<div class="h5 pd-20 mb-0 clearfix">
+				<div class="pull-left">
+					<h4 class="text-blue h4">自動設定一覧</h4>
+				</div>
+				<div class="pull-right">
+					<%= link_to "javascript:void(0);", class: "btn btn-primary btn-sm scroll-click", onclick: 'confirmDeleteSettings();' do %>
+						<i class="icon-copy dw dw-delete-3"></i> 削除
+					<% end %>
+				</div>
 			</div>
 			<table class="data-table table nowrap">
 				<thead>
 					<tr>
+						<th>
+							<%= check_box_tag '', '', false, { id: 'batch_select_checkbox', onclick: 'toggleCheckBoxes(this);', "data-toggle": "tooltip", "data-placement": "top", "title": "一括選択" } %>
+						</th>
 						<th>名称</th>
 						<th>スポーツ</th>
 						<th class="datatable-nosort">施設</th>
 						<th class="datatable-nosort">空き状況確認</th>
 						<th class="datatable-nosort">編集</th>
-						<th class="datatable-nosort">削除</th>
 					</tr>
 				</thead>
 				<tbody id="automation_settings_tbody">
@@ -279,15 +288,6 @@
 	</div>
 </div>
 
-<table style="display: none;">
-	<tbody>
-		<tr id="no-data-row" class="odd">
-			<td valign="top" colspan="6" class="dataTables_empty1">
-				No data available in table
-			</td>
-		</tr>
-	</tbody>
-</table>
 <!-- js -->
 <%= javascript_include_tag 'vendors/scripts/core' %>
 <%= javascript_include_tag 'vendors/scripts/script.min' %>
