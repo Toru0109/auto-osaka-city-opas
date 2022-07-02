@@ -1,9 +1,4 @@
 /* automation_settings#index */
-const toggleCheckBoxes = (batchCheckBox) => {
-  const checkBoxes = document.querySelectorAll('input[class="automation_setting_checkbox"]');
-  checkBoxes.forEach(checkBox => { checkBox.checked = batchCheckBox.checked });
-}
-
 const confirmDeleteSettings = () => {
   const checkedCheckBoxes = document.querySelectorAll('input[class="automation_setting_checkbox"]:checked');
 
@@ -38,17 +33,6 @@ const deleteAutomationSettings = (automationSettingIds) => {
       'automation_setting_ids': automationSettingIds
     }
   });
-}
-
-const toggleBatchCheckBox = () => {
-  const selector = 'input[class="automation_setting_checkbox"]';
-  let isChecked = false;
-
-  if (document.querySelectorAll(selector).length == document.querySelectorAll(`${selector}:checked`).length) {
-    isChecked = true;
-  }
-
-  document.querySelector('input[id="batch_select_checkbox"]').checked = isChecked;
 }
 
 /* automation_settings#new, edit */
