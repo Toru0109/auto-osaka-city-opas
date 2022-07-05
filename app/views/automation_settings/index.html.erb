@@ -259,31 +259,38 @@
 				<div class="pull-left">
 					<h4 class="text-blue h4">自動設定一覧</h4>
 				</div>
-				<div class="pull-right">
+			</div>
+			<div class="clearfix" style="padding: 0px 0px 20px 20px;">
+				<div class="pull-left">
+					<%= link_to new_automation_setting_path, class: "btn btn-primary btn-sm scroll-click", data: { turbolinks: false } do %>
+						<i class="icon-copy fi-plus"></i> 新規登録
+					<% end %>
 					<%= link_to "javascript:void(0);", class: "btn btn-primary btn-sm scroll-click", onclick: 'confirmDeleteSettings();' do %>
 						<i class="icon-copy dw dw-delete-3"></i> 削除
 					<% end %>
 				</div>
 			</div>
-			<table class="data-table table nowrap">
-				<thead>
-					<tr>
-						<th>
-							<%= check_box_tag '', '', false, { id: 'batch_select_checkbox', "data-toggle": "tooltip", "data-placement": "top", "title": "一括選択" } %>
-						</th>
-						<th>名称</th>
-						<th>スポーツ</th>
-						<th class="datatable-nosort">施設</th>
-						<th class="datatable-nosort">空き状況確認</th>
-						<th class="datatable-nosort">編集</th>
-					</tr>
-				</thead>
-				<tbody id="automation_settings_tbody">
-					<% @automation_settings.each do |automation_setting| %>
-						<%= render partial: 'automation_setting_row', locals: { automation_setting: automation_setting } %>
-					<% end %>
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="automation-settings-table table table-striped">
+					<thead>
+						<tr>
+							<th>
+								<%= check_box_tag '', '', false, { id: 'batch_select_checkbox', "data-toggle": "tooltip", "data-placement": "top", "title": "一括選択" } %>
+							</th>
+							<th>名称</th>
+							<th>スポーツ</th>
+							<th>施設</th>
+							<th>空き状況確認</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="automation_settings_tbody">
+						<% @automation_settings.each do |automation_setting| %>
+							<%= render partial: 'automation_setting_row', locals: { automation_setting: automation_setting } %>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
@@ -303,10 +310,6 @@
 
 <script type="text/javascript">
 	$(function() {
-		const dataTablesEmpty = $("td[class='dataTables_empty']");
-		// 表示データが0件の場合に表示される「No data available in table」の削除
-		if (dataTablesEmpty) { dataTablesEmpty.parent().remove(); }
-
 		// icheck
 		const batchSelectCheckBox = $("#batch_select_checkbox");
 		const checkBoxes = $(".automation_setting_checkbox");

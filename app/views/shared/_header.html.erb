@@ -1,7 +1,7 @@
 <div class="header">
 	<div class="header-left">
 		<div class="menu-icon dw dw-menu"></div>
-		<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+		<div class="search-toggle-icon icon-copy fa fa-search" data-toggle="header_search"></div>
 		<% if search_keyword %>
 			<div class="header-search">
 				<%= form_with url: automation_settings_path, local: true, method: 'get', html: { style: 'padding: 0px;margin: 0px;' } do |f| %>
@@ -13,7 +13,7 @@
 							<!--<a class="search-button dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">-->
 							<%= button_tag :submit, class: "search-button dropdown-toggle no-arrow", "data-toggle": "tooltip", "data-placement": "right", "title": "検索" do %>
 								<!--<i class="ion-arrow-down-c"></i>-->
-								<i class="dw dw-search2 search-icon"></i>
+								<i class="icon-copy fa fa-search" aria-hidden="true" style="color: #FFFFFF;"></i>
 							<% end %>
 							<!--</a> -->
 
