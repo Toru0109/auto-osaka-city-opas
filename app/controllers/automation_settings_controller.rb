@@ -13,6 +13,8 @@ class AutomationSettingsController < ApplicationController
       @automation_settings = @automation_settings.where("name LIKE ?", "%#{params[:search_keyword]}%")
       @search_keyword = params[:search_keyword]
     end
+
+    @automation_settings = @automation_settings.page(params[:page])
   end
 
   def new
