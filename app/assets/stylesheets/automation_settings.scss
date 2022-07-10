@@ -22,7 +22,7 @@ padding-left: 10px;
   background-color: #d8e7fd;
 }
 
-.header-search {
+.header-left {
   .search-input {
     padding-left: 10px !important;
     padding-right: 80px !important;
@@ -49,6 +49,12 @@ padding-left: 10px;
   }
   .search-magnifying-glass-icon {
     color: #FFFFFF;
+  }
+}
+
+.header-right {
+  .user-info-dropdown {
+    margin-right: 70px;
   }
 }
 

@@ -20,4 +20,24 @@
 			</div>
 		<% end %>
 	</div>
+	<div class="header-right">
+		<div class="user-info-dropdown">
+			<div class="dropdown">
+				<%= link_to '#', class: 'dropdown-toggle', role: 'button', 'data-toggle': 'dropdown' do %>
+					<span class="user-icon">
+						<%= image_tag 'default_icon.png', alt: '' %>
+					</span>
+					<span class="user-name"><%= "#{current_user.user_name}さん" %></span>
+				<% end %>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+					<%= link_to 'profile.html', class: 'dropdown-item' do %>
+						<i class="dw dw-user1"></i> プロフィール
+					<% end %>
+					<%= link_to sign_out_path, method: :delete, class: "dropdown-item" do %>
+						<i class="dw dw-logout"></i> ログアウト
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
