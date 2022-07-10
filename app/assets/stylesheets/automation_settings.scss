@@ -45,3 +45,41 @@ span.badge.badge-danger {
   border-color: #1b00ff;
   box-shadow: 0px 0px 28px rgba(0, 0, 0, .1);
 }
+
+.automation-settings-table {
+  table-layout: fixed;
+  width: 100%;
+  thead th:nth-child(1) {
+    width: 60px;
+  }
+  thead th:nth-child(2), thead th:nth-child(3) {
+    width: 200px;
+  }
+  thead th:nth-child(4) {
+    width: 800px;
+  }
+  thead th:nth-child(5) {
+    width: 140px;
+  }
+  thead th:nth-child(6) {
+    width: 100px;
+  }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pagination-area {
+  padding: 0px 0px 20px 20px;
+}
+
+.sort_active {
+  color: #1b00ff;
+}
+
+.sort-icon {
+  font-weight: bold;
+}
