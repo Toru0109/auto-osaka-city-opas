@@ -22,14 +22,34 @@ padding-left: 10px;
   background-color: #d8e7fd;
 }
 
-.search-input {
-  padding-left: 10px !important;
-}
-
-.search-button {
-  width: 60px !important;
-  border: initial;
-  background: #1b00ff;
+.header-search {
+  .search-input {
+    padding-left: 10px !important;
+    padding-right: 80px !important;
+  }
+  .search-execute {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 45px;
+    line-height: 45px;
+  }
+  .search-clear {
+    margin-right: 8px;
+    display: none;
+  }
+  .search-clear-icon {
+    color: #777;
+  }
+  .search-button {
+    width: 45px;
+    border: initial;
+    background: #1b00ff;
+    border-radius: 0 .25rem .25rem 0;
+  }
+  .search-magnifying-glass-icon {
+    color: #FFFFFF;
+  }
 }
 
 .form-label {
