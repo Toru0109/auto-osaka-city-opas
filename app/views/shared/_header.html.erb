@@ -6,10 +6,13 @@
 			<div class="header-search">
 				<%= form_with url: automation_settings_path, local: true, method: 'get', html: { style: 'padding: 0px;margin: 0px;' } do |f| %>
 					<div class="form-group mb-0">
-						<%= f.text_field :search_keyword, class: 'form-control search-input', placeholder: '名称を入力', value: search_keyword %>
-						<div class="dropdown">
-							<%= button_tag :submit, class: "search-button dropdown-toggle no-arrow", "data-toggle": "tooltip", "data-placement": "right", "title": "検索" do %>
-								<i class="icon-copy fa fa-search" aria-hidden="true" style="color: #FFFFFF;"></i>
+						<%= f.text_field :search_keyword, class: 'form-control search-input', placeholder: '名称を入力', value: search_keyword, maxlength: 30, oninput: 'toggleDisplaySearchClear(this);' %>
+						<div class="search-execute">
+							<%= link_to automation_settings_path, class: 'search-clear', "data-toggle": "tooltip", "data-placement": "left", "title": "検索条件をクリア", data: { turbolinks: false } do %>
+								<i class="icon-copy fa fa-close search-clear-icon" aria-hidden="true"></i>
+							<% end %>
+							<%= button_tag :submit, class: "search-button", "data-toggle": "tooltip", "data-placement": "right", "title": "検索" do %>
+								<i class="icon-copy fa fa-search search-magnifying-glass-icon" aria-hidden="true"></i>
 							<% end %>
 						</div>
 					</div>

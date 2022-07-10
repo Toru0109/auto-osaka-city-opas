@@ -88,3 +88,12 @@ const checkAutomationSettingValues = () => {
 
   return true;
 }
+
+const toggleDisplaySearchClear = (searchInput) => {
+  if (searchInput.value.length <= 0) {
+    $('a.search-clear').hide();
+    return;
+  }
+
+  $('a.search-clear').show();
+}
