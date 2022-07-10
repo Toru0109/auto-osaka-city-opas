@@ -4,15 +4,12 @@ class AutomationSettingsController < ApplicationController
   before_action :set_automation_setting, only: [:edit, :update, :execute]
 
   def index
-    @search_keyword = ''
-    @automation_settings = AutomationSetting
-      .where(user_id: @current_user.id)
-      .order(:id)
+    @search_keyword = params[:search_keyword].to_s
+    @automation_settings = AutomationSetting.where(user_id: @current_user.id)
+    @automation_settings = @automation_settings.where("name LIKE ?", "%#{@search_keyword}%") if @search_keyword.present?
 
-    if params[:search_keyword].present?
-      @automation_settings = @automation_settings.where("name LIKE ?", "%#{params[:search_keyword]}%")
-      @search_keyword = params[:search_keyword]
-    end
+    @sort_name_order = sort_params
+    @automation_settings = @sort_name_order ? @automation_settings.order(@sort_name_order) : @automation_settings.order('id asc')
 
     @automation_settings = @automation_settings.page(params[:page])
   end
@@ -99,5 +96,9 @@ class AutomationSettingsController < ApplicationController
   def check_automation_setting_owner
     automation_setting = AutomationSetting.find_by(id: params[:id])
     redirect_to root_path if !automation_setting || automation_setting.user.id != session[:user_id]
+  end
+
+  def sort_params
+    %w[name.asc name.desc sports_type.asc sports_type.desc].include?(params[:sort]) ? params[:sort].split('.').join(' ') : nil
   end
 end
