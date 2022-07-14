@@ -1,0 +1,55 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'automation_settings' %>
+<% end %>
+
+<div class="mobile-menu-overlay"></div>
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="pd-20 card-box mb-30">
+        <div class="clearfix mb-20">
+          <div class="pull-left">
+            <h4 class="text-blue h4">自動設定詳細</h4>
+          </div>
+        </div>
+        <table class="automation-setting-detail-table table table-striped">
+          <tbody>
+            <tr>
+              <th scope="col">名称</th>
+              <td><%= @automation_setting.name %></td>
+            </tr>
+            <tr>
+              <th scope="col">スポーツ</th>
+              <td><%= @automation_setting.sports_name %></td>
+            </tr>
+            <tr>
+              <th scope="col">施設</th>
+              <td>
+                <ul>
+                  <% @automation_setting.facility_names.each do |facility_name| %>
+                    <li><%= facility_name %></li>
+                  <% end %>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="action-links">
+          <%= link_to automation_settings_path, class: 'btn btn-secondary', data: { turbolinks: false } do %>
+            <i class="icon-copy fa fa-list" aria-hidden="true"></i> 一覧へ
+          <% end %>
+          <%= link_to edit_automation_setting_path(@automation_setting.id), class: 'btn btn-primary', data: { turbolinks: false } do %>
+            <i class="icon-copy fa fa-edit" aria-hidden="true"></i> 編集
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- js -->
+<%= javascript_include_tag 'vendors/scripts/core' %>
+<%= javascript_include_tag 'vendors/scripts/script.min' %>
+<%= javascript_include_tag 'vendors/scripts/process' %>
+<%= javascript_include_tag 'vendors/scripts/layout-settings' %>
+

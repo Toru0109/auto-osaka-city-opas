@@ -1,7 +1,7 @@
 <tr id="automation_setting_row_<%= automation_setting.id %>">
   <td><%= check_box_tag '', automation_setting.id, false, { class: 'automation_setting_checkbox' } %></td>
   <td class="text-ellipsis">
-    <%= link_to automation_setting.name, automation_setting_path(automation_setting.id), style: 'color: #1b00ff;' %>
+    <%= link_to automation_setting.name, automation_setting_path(automation_setting.id), style: 'color: #1b00ff;', data: { turbolinks: false } %>
   </td>
   <td class="text-ellipsis">
     <%= automation_setting.sports_name %>

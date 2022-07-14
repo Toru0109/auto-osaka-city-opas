@@ -1,7 +1,6 @@
 class AutomationSettingsController < ApplicationController
   before_action :logged_in_user
-  before_action :check_automation_setting_owner, only: [:edit]
-  before_action :set_automation_setting, only: [:edit, :update, :execute]
+  before_action :set_automation_setting, only: [:show, :edit, :update, :execute]
 
   def index
     @search_keyword = params[:search_keyword].to_s
@@ -83,7 +82,7 @@ class AutomationSettingsController < ApplicationController
   private
 
   def set_automation_setting
-    @automation_setting = AutomationSetting.find_by(
+    @automation_setting = AutomationSetting.find_by!(
       id: params[:id],
       user_id: session[:user_id]
     )
@@ -91,11 +90,6 @@ class AutomationSettingsController < ApplicationController
 
   def automation_setting_params
     params.require(:automation_setting).permit(:name, :sports_type, { facility_types: [] })
-  end
-
-  def check_automation_setting_owner
-    automation_setting = AutomationSetting.find_by(id: params[:id])
-    redirect_to root_path if !automation_setting || automation_setting.user.id != session[:user_id]
   end
 
   def sort_params
