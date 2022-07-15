@@ -22,7 +22,7 @@
 					<% end %>
 				</div>
 			</div>
-			<div class="table-responsive">
+			<div class="table-responsive scrollable-table">
 				<table class="automation-settings-table table table-striped">
 					<thead>
 						<tr>
@@ -110,6 +110,12 @@
 			}
 
 			batchSelectCheckBox.iCheck(checkCondition);
+		});
+
+		// scroll hint
+		new ScrollHint('.scrollable-table', {
+			scrollHintIconAppendClass: 'scroll-hint-icon-black',
+			i18n: { scrollable: 'スクロールできます' }
 		});
 	});
 </script>
