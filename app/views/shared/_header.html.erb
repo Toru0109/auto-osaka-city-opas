@@ -1,8 +1,8 @@
 <div class="header">
 	<div class="header-left">
 		<div class="menu-icon dw dw-menu"></div>
-		<div class="search-toggle-icon icon-copy fa fa-search" data-toggle="header_search"></div>
 		<% if search_keyword %>
+			<div class="search-toggle-icon icon-copy fa fa-search" data-toggle="header_search"></div>
 			<div class="header-search">
 				<%= form_with url: automation_settings_path, local: true, method: 'get', html: { style: 'padding: 0px;margin: 0px;' } do |f| %>
 					<div class="form-group mb-0">
