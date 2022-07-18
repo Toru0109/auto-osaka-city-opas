@@ -16,11 +16,11 @@
         </div>
         <%= form_with model: current_user, url: user_update_path, method: :put, local: true, html: { onsubmit: "return checkUserValues();" } do |f| %>
           <div class="form-group">
-            <label>ユーザー名</label>
+            <%= label_tag '', 'ユーザー名' %>
             <%= f.text_field :user_name, id: 'user_name', class: 'form-control', maxlength: 15 %>
           </div>
           <div class="form-group">
-            <label>利用者番号</label>
+            <%= label_tag '', '利用者番号' %>
             <%= f.text_field :user_number, id: 'user_number', class: 'form-control', maxlength: 8 %>
           </div>
           <div>
