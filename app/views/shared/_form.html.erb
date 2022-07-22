@@ -1,7 +1,7 @@
 <%= form_with form_hash.merge(local: true, html: { onsubmit: "return checkAutomationSettingValues();" }) do |f| %>
   <div class="form-group">
     <%= label_tag '', '名称', class: 'form-label' %><span class="badge badge-danger">必須</span>
-    <%= f.text_field :name, class: 'form-control', maxlength: '30' %>
+    <%= f.text_field :name, class: 'form-control name-input', maxlength: '30' %>
   </div>
   <div class="form-group">
     <%= label_tag '', 'スポーツ', class: 'form-label' %><span class="badge badge-danger">必須</span>

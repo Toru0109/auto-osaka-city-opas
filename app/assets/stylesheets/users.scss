@@ -11,3 +11,10 @@
   top: 45px;
   right: 20px;
 }
+
+@media screen and (max-width: 480px) {
+  .user-name-input, .user-number-input, .current-password-input,
+  .new-password-input, .new-password-confirmation-input {
+    font-size: 16px;
+  }
+}

@@ -123,3 +123,9 @@ span.badge.badge-danger {
     margin-right: 20px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .search-input, .name-input {
+    font-size: 16px;
+  }
+}
