@@ -66,7 +66,10 @@ class AutomationSettingsController < ApplicationController
   def execute
     render status: :not_found and return unless @automation_setting
 
-    OsakaCityOpasOperateWorker.perform_at(3.second, @automation_setting.user_id, @automation_setting.id)
+    operator = OsakaCityOpasOperator.new(session[:user_id], @automation_setting.id)
+    operator.display_availability
+
+    # OsakaCityOpasOperateWorker.perform_at(3.second, @automation_setting.user_id, @automation_setting.id)
     render status: :accepted
   rescue => ex
     p '==============='
