@@ -41,6 +41,7 @@ class OsakaCityOpasOperator
     @driver ||= begin
       driver = Selenium::WebDriver.for :chrome,
         capabilities: Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => { detach: true, excludeSwitches: ['enable-automation'] })
+      driver.manage.new_window(:window)
       driver.manage.window.maximize
       driver.manage.timeouts.implicit_wait = 10
       driver
