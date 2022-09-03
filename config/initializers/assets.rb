@@ -10,6 +10,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join('assets', 'vendor')
 Rails.application.config.assets.paths << Rails.root.join('assets', 'src')
+Rails.application.config.assets.precompile += %w( css/amoeba.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
@@ -24,4 +25,7 @@ Rails.application.config.assets.precompile += %w(
   src/*
   js/*
   icheck/*
+  deskapp/*
+  amoeba/*
+  life_is_good/*
 )
