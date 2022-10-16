@@ -97,3 +97,22 @@ const toggleDisplaySearchClear = (searchInput) => {
 
   $('a.search-clear').show();
 }
+
+const openOsakaCityOpas = (sports, facilities) => {
+  $.ajax({
+    type: 'GET',
+    url: '/users/login_info',
+  }).done(function(data) {
+    const encryptedUserNumber = encrypt(data.user_number, 'judapfa8qphcadafi@acjaihuay@ua');
+    const encryptedPassword = encrypt(data.password, 'kdafoiapypva8y84pchahucpaahdah');
+
+    window.open(
+      `https://reserve.opas.jp/osakashi/Welcome.cgi?n=${encryptedUserNumber}&p=${encryptedPassword}&sports=${sports}&facilities=${facilities}`,
+      '_blank'
+    )
+  });
+}
+
+const encrypt = (data, key) => {
+  return CryptoJS.AES.encrypt(data, key).toString();
+}

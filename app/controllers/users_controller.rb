@@ -62,6 +62,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def login_info
+    render json: { user_number: current_user.user_number, password: current_user.decrypted_password }, status: :ok
+  end
+
   private
 
   def user_params

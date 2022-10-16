@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/user/destroy', to: 'users#destroy'
   get '/change_password', to: 'users#change_password'
   put '/update_password', to: 'users#update_password'
+  get '/users/login_info', to: 'users#login_info'
 
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'

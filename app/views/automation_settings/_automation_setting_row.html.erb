@@ -9,8 +9,13 @@
   <td class="text-ellipsis">
     <%= automation_setting.facility_names.join('、') %>
   </td>
+  <!--
   <td>
     <%= button_to "処理開始", execute_path, remote: true, params: { id: automation_setting.id }, class: "btn btn-primary btn-sm", data: { disable_with: "処理中..." } %>
+  </td>
+  -->
+  <td>
+    <%= link_to '処理開始', 'javascript:void(0);', onclick: "openOsakaCityOpas(#{automation_setting.sports_type}, #{automation_setting.facility_types})", class: "btn btn-primary btn-sm" %>
   </td>
   <td>
     <div class="table-actions">
