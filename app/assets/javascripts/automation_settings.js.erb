@@ -36,7 +36,6 @@ const deleteAutomationSettings = (automationSettingIds) => {
 }
 
 /* automation_settings#new, edit */
-const facilityTypes = <%= AutomationSetting::FACILITY_TYPES.to_json %>;
 const getFacilityTypes = (event) => {
   let selectCondition;
   const sportsTypeValue = event.target.value;
@@ -46,9 +45,7 @@ const getFacilityTypes = (event) => {
   if (sportsTypeValue === '') {
     selectCondition = 'disable';
   } else {
-    $.each(facilityTypes[sportsTypeValue], function(value, name) {
-      select.append($('<option>').html(name).val(value))
-    })
+    appendSelectOptions(select, sportsTypeValue);
     selectCondition = 'enable';
   }
 
@@ -56,9 +53,8 @@ const getFacilityTypes = (event) => {
   select.multipleSelect(selectCondition);
 }
 
-const appendSelectOptions = (facilityTypesSelect) => {
+const appendSelectOptions = (facilityTypesSelect, sportsTypeValue) => {
   const facilityTypes = <%= AutomationSetting::FACILITY_TYPES.to_json %>;
-  const sportsTypeValue = $('#automation_setting_sports_type').val();
 
   $.each(facilityTypes[sportsTypeValue], function(value, name) {
     facilityTypesSelect.append($('<option>').html(name).val(value));
@@ -103,8 +99,11 @@ const openOsakaCityOpas = (sports, facilities) => {
     type: 'GET',
     url: '/users/login_info',
   }).done(function(data) {
-    const encryptedUserNumber = encrypt(data.user_number, 'judapfa8qphcadafi@acjaihuay@ua');
-    const encryptedPassword = encrypt(data.password, 'kdafoiapypva8y84pchahucpaahdah');
+    // const encryptedUserNumber = encrypt(data.user_number, 'judapfa8qphcadafi@acjaihuay@ua');
+    // const encryptedPassword = encrypt(data.password, 'kdafoiapypva8y84pchahucpaahdah');
+    const encryptedUserNumber = data.user_number;
+    const encryptedPassword = data.password;
+
 
     window.open(
       `https://reserve.opas.jp/osakashi/Welcome.cgi?n=${encryptedUserNumber}&p=${encryptedPassword}&sports=${sports}&facilities=${facilities}`,

@@ -31,7 +31,7 @@
 <%= javascript_include_tag 'https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js' %>
 <script>
   const facilityTypesSelect = $('#automation_setting_facility_types');
-  appendSelectOptions(facilityTypesSelect);
+  appendSelectOptions(facilityTypesSelect, $('#automation_setting_sports_type').val());
   facilityTypesSelect.val(
     <%== @automation_setting.facility_types.split(',').to_json %>
   );

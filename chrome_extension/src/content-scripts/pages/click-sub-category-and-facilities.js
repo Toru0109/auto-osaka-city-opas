@@ -16,13 +16,15 @@ export default () => {
 }
 
 const checkFacilities = () => {
-  let id = "";
+  let ids = "";
   chrome.storage.local.get("sports", (data) => {
     const sports = data["sports"];
     chrome.storage.local.get("facilities", (data) => {
       data["facilities"].split(",").forEach((facility) => {
-        id = FACILITIES_TABLE[sports][facility];
-        document.getElementById(id).parentNode.click();
+        ids = FACILITIES_TABLE[sports][facility];
+        ids.forEach((id) => {
+          document.getElementById(id).parentNode.click();
+        })
       })
     })
   })
