@@ -1,6 +1,6 @@
 class AutomationSettingsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_automation_setting, only: [:show, :edit, :update, :execute]
+  before_action :set_automation_setting, only: [:show, :edit, :update]
 
   def index
     @search_keyword = params[:search_keyword].to_s
@@ -61,22 +61,6 @@ class AutomationSettingsController < ApplicationController
     automation_settings.delete_all
     flash[:success] = '設定を削除しました。'
     redirect_to automation_settings_path
-  end
-
-  def execute
-    render status: :not_found and return unless @automation_setting
-
-    OsakaCityOpasOperateWorker.perform_at(3.second, @automation_setting.user_id, @automation_setting.id)
-    render status: :accepted
-  rescue => ex
-    p '==============='
-    p ex.class
-    p ex.message
-    p ex.backtrace
-    p '==============='
-
-    # DB接続エラー
-    render status: :internal_server_error
   end
 
   private

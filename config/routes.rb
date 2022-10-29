@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root to: "tops#index"
 
-  get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
@@ -13,11 +12,9 @@ Rails.application.routes.draw do
   put '/update_password', to: 'users#update_password'
   get '/users/login_info', to: 'users#login_info'
 
-  get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
   delete '/sign_out', to: 'sessions#destroy'
 
   resources :automation_settings
-  post '/execute', to: 'automation_settings#execute'
   delete 'automation_settings/delete', to: 'automation_settings#destroy'
 end

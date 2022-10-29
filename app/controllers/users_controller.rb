@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :change_password, :update_password]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :change_password, :update_password, :login_info]
 
   def create
     if user_params[:password] != user_params[:password_confirmation]
