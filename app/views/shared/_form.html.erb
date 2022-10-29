@@ -5,7 +5,7 @@
   </div>
   <div class="form-group">
     <%= label_tag '', 'スポーツ', class: 'form-label' %><span class="badge badge-danger">必須</span>
-    <%= f.select :sports_type, AutomationSetting::SPORTS_NAMES, { include_blank: '選択してください', disabled: (1..5).to_a+(8..43).to_a.map(&:to_s) }, { class: "form-control", onchange: 'getFacilityTypes(event);' } %>
+    <%= f.select :sports_type, Constants::Sports::NAMES.invert.to_a, { include_blank: '選択してください' }, { class: "form-control", onchange: 'getFacilityTypes(event);' } %>
   </div>
   <div class="form-group">
     <%= label_tag '', '施設', class: 'form-label' %><span class="badge badge-danger">必須</span>

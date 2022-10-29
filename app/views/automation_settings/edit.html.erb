@@ -30,6 +30,7 @@
 <%= javascript_include_tag 'vendors/scripts/layout-settings' %>
 <%= javascript_include_tag 'https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js' %>
 <script>
+	const FACILITY_TYPES = <%== AutomationSetting::SPORTS_FACILITIES_TABLE.to_json %>;
   const facilityTypesSelect = $('#automation_setting_facility_types');
   appendSelectOptions(facilityTypesSelect, $('#automation_setting_sports_type').val());
   facilityTypesSelect.val(

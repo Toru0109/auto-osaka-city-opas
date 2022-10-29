@@ -54,9 +54,7 @@ const getFacilityTypes = (event) => {
 }
 
 const appendSelectOptions = (facilityTypesSelect, sportsTypeValue) => {
-  const facilityTypes = <%= AutomationSetting::FACILITY_TYPES.to_json %>;
-
-  $.each(facilityTypes[sportsTypeValue], function(value, name) {
+  $.each(FACILITY_TYPES[sportsTypeValue], function(value, name) {
     facilityTypesSelect.append($('<option>').html(name).val(value));
   })
 }
