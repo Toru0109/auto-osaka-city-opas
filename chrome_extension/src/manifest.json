@@ -2,10 +2,15 @@
   "manifest_version": 3,
   "name": "Auto Osaka City Opas",
   "description": "大阪市オーパスの自動空き状況確認システム",
-  "default_locale": "en",
+  "default_locale": "ja",
   "permissions": [
     "storage"
   ],
+  "icons": {
+    "16": "/icons/icon16.png",
+    "48": "/icons/icon48.png",
+    "128": "/icons/icon128.png"
+  },
   "content_scripts": [{
     "matches": [
       "https://reserve.opas.jp/osakashi/Welcome.cgi?*",
