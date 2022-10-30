@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
   root to: "tops#index"
 
   resource :session, only: [:create, :destroy]
