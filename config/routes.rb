@@ -4,17 +4,15 @@ Rails.application.routes.draw do
 
   root to: "tops#index"
 
-  post '/sign_up', to: 'users#create'
-  get '/user/edit', to: 'users#edit'
-  put '/user/update', to: 'users#update'
-  delete '/user/destroy', to: 'users#destroy'
-  get '/change_password', to: 'users#change_password'
-  put '/update_password', to: 'users#update_password'
-  get '/users/login_info', to: 'users#login_info'
+  resource :session, only: [:create, :destroy]
 
-  post '/sign_in', to: 'sessions#create'
-  delete '/sign_out', to: 'sessions#destroy'
+  resource :user, only: [:create, :edit, :update, :destroy] do
+    get 'change_password'
+    get 'login_info'
+    put 'update_password'
+  end
 
-  resources :automation_settings
-  delete 'automation_settings/delete', to: 'automation_settings#destroy'
+  resources :automation_settings, only: [:index, :new, :show, :create, :edit, :update] do
+    delete :delete, action: :destroy, on: :collection
+  end
 end

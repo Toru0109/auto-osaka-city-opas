@@ -25,8 +25,8 @@
 						<span class="micon dw dw-user1"></span><span class="mtext">ユーザー情報</span>
 					<% end %>
 					<ul class="submenu">
-						<li><%= link_to '編集', user_edit_path, data: { turbolinks: false } %></li>
-						<li><%= link_to 'パスワード変更', change_password_path, data: { turbolinks: false } %></li>
+						<li><%= link_to '編集', edit_user_path, data: { turbolinks: false } %></li>
+						<li><%= link_to 'パスワード変更', change_password_user_path, data: { turbolinks: false } %></li>
 					</ul>
 				</li>
 				<li>

@@ -119,7 +119,7 @@ const confirmAccountDeletion = () => {
 const deleteAccount = () => {
   $.ajax({
     type: 'DELETE',
-    url: '/user/destroy',
+    url: '/user',
     headers: {
       'X-CSRF-Token': getCsrfToken()
     }

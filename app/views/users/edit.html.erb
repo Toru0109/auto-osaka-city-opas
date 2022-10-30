@@ -14,7 +14,7 @@
             <h4 class="text-blue h4">ユーザー情報編集</h4>
           </div>
         </div>
-        <%= form_with model: current_user, url: user_update_path, method: :put, local: true, html: { onsubmit: "return checkUserValues();" } do |f| %>
+        <%= form_with model: current_user, url: user_path, method: :put, local: true, html: { onsubmit: "return checkUserValues();" } do |f| %>
           <div class="form-group">
             <%= label_tag '', 'ユーザー名' %>
             <%= f.text_field :user_name, id: 'user_name', class: 'form-control user-name-input', maxlength: 15 %>

@@ -95,7 +95,7 @@ const toggleDisplaySearchClear = (searchInput) => {
 const openOsakaCityOpas = (sports, facilities) => {
   $.ajax({
     type: 'GET',
-    url: '/users/login_info',
+    url: '/user/login_info',
   }).done(function(data) {
     // const encryptedUserNumber = encrypt(data.user_number, 'judapfa8qphcadafi@acjaihuay@ua');
     // const encryptedPassword = encrypt(data.password, 'kdafoiapypva8y84pchahucpaahdah');

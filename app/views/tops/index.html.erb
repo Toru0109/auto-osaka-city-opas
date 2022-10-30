@@ -54,7 +54,7 @@
         <div class="form_section">
           <%= render partial: "shared/sign_up_and_in_form",
             locals: {
-              form_params: { model: User.new, url: sign_up_path, html: { class: 'sign-up-form', onsubmit: "return checkSignUp();" } },
+              form_params: { model: User.new, url: user_path, html: { class: 'sign-up-form', onsubmit: "return checkSignUp();" } },
               sign_up: true,
               id: 'sign-up'
             }
@@ -76,7 +76,7 @@
         <div class="form_section">
           <%= render partial: "shared/sign_up_and_in_form",
             locals: {
-              form_params: { scope: :session, url: sign_in_path, html: { class: 'sign-in-form', onsubmit: "return checkSignIn();" } },
+              form_params: { scope: :session, url: session_path, html: { class: 'sign-in-form', onsubmit: "return checkSignIn();" } },
               sign_up: false,
               id: 'sign-in'
             }
