@@ -29,6 +29,11 @@
 						<li><%= link_to 'パスワード変更', change_password_user_path, data: { turbolinks: false } %></li>
 					</ul>
 				</li>
+				<li class="dropdown">
+					<%= link_to manual_path, class: "dropdown-toggle manual_link", data: { turbolinks: false } do %>
+						<span class="micon fa fa-file-text-o"></span><span class="mtext">操作マニュアル</span>
+					<% end %>
+				</li>
 				<li>
 					<div class="dropdown-divider"></div>
 				</li>

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :automation_settings, only: [:index, :new, :show, :create, :edit, :update] do
     delete :delete, action: :destroy, on: :collection
   end
+
+  get '/manual', to: 'manuals#index'
 end

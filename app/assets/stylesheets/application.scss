@@ -79,3 +79,25 @@ nav ul li.nav-item a.nav-link {
   font-size: 20px;
   line-height: normal;
 }
+
+.manual_link::after {
+  display: none !important;
+}
+
+.manual_text {
+  margin-bottom: 20px;
+}
+
+.manual_explanation {
+  padding-left: 10px;
+}
+
+.manual_note {
+  color: #dc3545;
+  p {
+    margin: 0px;
+  }
+  p:nth-child(2), p:nth-child(3) {
+    padding-left: 20px;
+  }
+}

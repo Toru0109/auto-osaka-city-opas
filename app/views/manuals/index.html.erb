@@ -1,0 +1,45 @@
+<div class="mobile-menu-overlay"></div>
+
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="pd-20 card-box mb-30">
+				<div class="clearfix">
+					<div class="pull-left">
+						<h4 class="text-blue h4" style="margin-bottom: 30px;">操作マニュアル</h4>
+            <div class="manual_text">
+              1.
+              <span class="manual_explanation">
+                Auto Osaka City Opasの
+                <%= link_to 'Google Chrome拡張機能', automation_settings_path, style: 'color: #1b00ff;', target: :_blank %>
+                を追加し、有効にしてください。
+              <span>
+            </div>
+            <div class="manual_text">
+              2.
+              <span>
+                「自動設定」の「新規登録」画面で空き状況を確認したいスポーツと施設を登録してください。
+              <span>
+            </div>
+            <div class="manual_text">
+              3.
+              <span>
+                「自動設定」の「一覧」画面で自動設定の「処理開始」ボタンをクリックしてください。
+              <span>
+            </div>
+            <div class="manual_note">
+              <p>※こちらのシステムは下記環境にてご利用ください。</p>
+              <p>端末: パソコン</p>
+              <p>ブラウザ: Google Chrome</p>
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- js -->
+<%= javascript_include_tag 'vendors/scripts/core' %>
+<%= javascript_include_tag 'vendors/scripts/script.min' %>
+<%= javascript_include_tag 'vendors/scripts/process' %>
+<%= javascript_include_tag 'vendors/scripts/layout-settings' %>
