@@ -7,7 +7,6 @@
 <div class="main-container">
   <div class="pd-ltr-20 xs-pd-20-10">
     <div class="min-height-200px">
-
       <div class="pd-20 card-box mb-30">
         <div class="clearfix">
           <div class="pull-left">
@@ -15,13 +14,22 @@
           </div>
         </div>
         <%= form_with model: current_user, url: user_path, method: :put, local: true, html: { onsubmit: "return checkUserValues();" } do |f| %>
-          <div class="form-group">
-            <%= label_tag '', 'ユーザー名' %>
-            <%= f.text_field :user_name, id: 'user_name', class: 'form-control user-name-input', maxlength: 15 %>
-          </div>
-          <div class="form-group">
-            <%= label_tag '', '利用者番号' %>
-            <%= f.text_field :user_number, id: 'user_number', class: 'form-control user-number-input', maxlength: 8 %>
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <%= label_tag '', 'ユーザー名' %>
+                <%= f.text_field :user_name, id: 'user_name', class: 'form-control user-name-input', maxlength: 15 %>
+              </div>
+              <div class="form-group">
+                <%= label_tag '', '利用者番号' %>
+                <%= f.text_field :user_number, id: 'user_number', class: 'form-control user-number-input', maxlength: 8 %>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <input type="file" class="dropify" name="file" data-default-file="<%= image_url('default_icon.png') %>" data-height="180">
+              </div>
+            </div>
           </div>
           <div>
             <%= f.submit "更新", class: "btn btn-primary", data: { disable_with: false } %>
@@ -37,3 +45,16 @@
 <%= javascript_include_tag 'vendors/scripts/script.min' %>
 <%= javascript_include_tag 'vendors/scripts/process' %>
 <%= javascript_include_tag 'vendors/scripts/layout-settings' %>
+<%= javascript_include_tag 'dropify/js/dropify.min' %>
+
+<script>
+  $(document).ready(function(){
+		$('.dropify').dropify({
+      messages: {
+        'default': 'ここに画像をドロップ',
+        'replace': 'ここに画像をドロップ',
+        'remove':  '削除',
+      }
+    });
+	});
+</script>

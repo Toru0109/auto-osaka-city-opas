@@ -25,6 +25,7 @@ Rails.application.config.assets.precompile += %w(
   src/*
   js/*
   icheck/*
+  dropify/*
   deskapp/*
   amoeba/*
   life_is_good/*
