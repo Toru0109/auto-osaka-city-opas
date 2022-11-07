@@ -36,6 +36,11 @@ gem 'rails-i18n', '~> 5.1'
 gem 'terser', '~> 1.1', '>= 1.1.1'
 gem "jquery-rails"
 
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'pry-rails'
+
 # sidekiq
 gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra', require: false

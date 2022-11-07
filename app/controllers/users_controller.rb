@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy, :change_password, :update_password, :login_info]
 
   def create
+    user_params = create_user_params
     if user_params[:password] != user_params[:password_confirmation]
       flash[:error] = 'パスワードがパスワード（確認用）と一致しません。'
       redirect_to root_path and return
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes(user_params)
+    if current_user.update_attributes(update_user_params)
       flash[:success] = 'ユーザー情報を更新しました。'
       redirect_to automation_settings_path
     else
@@ -68,7 +69,11 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
+  def create_user_params
     params.require(:user).permit(:user_name, :user_number, :password, :password_confirmation)
+  end
+
+  def update_user_params
+    params.require(:user).permit(:user_name, :user_number, :image)
   end
 end

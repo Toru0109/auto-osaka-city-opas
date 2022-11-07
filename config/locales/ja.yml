@@ -6,3 +6,7 @@ ja:
       previous: <i class="icon-copy fa fa-angle-left" aria-hidden="true"></i>
       next: <i class="icon-copy fa fa-angle-right" aria-hidden="true"></i>
       truncate: "..."
+  errors:
+    messages:
+      max_size_error: '2MB以下の画像をアップロードしてください。'
+      extension_whitelist_error: '拡張子が%{allowed_types}の画像をアップロードしてください。'

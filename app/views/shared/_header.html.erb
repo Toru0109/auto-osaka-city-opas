@@ -1,3 +1,4 @@
+
 <div class="header">
 	<div class="header-left">
 		<div class="menu-icon dw dw-menu"></div>
@@ -25,13 +26,13 @@
 			<div class="dropdown">
 				<%= link_to '#', class: 'dropdown-toggle', role: 'button', 'data-toggle': 'dropdown' do %>
 					<span class="user-icon">
-						<%= image_tag 'default_icon.png', alt: '' %>
+						<%= image_tag current_user.image_url, size: '52x52', alt: '' %>
 					</span>
 					<span class="user-name"><%= "#{current_user.user_name}さん" %></span>
 				<% end %>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-					<%= link_to 'profile.html', class: 'dropdown-item' do %>
-						<i class="dw dw-user1"></i> プロフィール
+					<%= link_to edit_user_path, class: 'dropdown-item', data: { turbolinks: false } do %>
+						<i class="dw dw-user1"></i> ユーザー情報編集
 					<% end %>
 					<%= link_to session_path, method: :delete, class: "dropdown-item" do %>
 						<i class="dw dw-logout"></i> ログアウト

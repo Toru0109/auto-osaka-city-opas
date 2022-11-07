@@ -27,7 +27,8 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <input type="file" class="dropify" name="file" data-default-file="<%= image_url('default_icon.png') %>" data-height="180">
+                <%= f.file_field :image, class: 'dropify', 'data-height': '180', 'data-default-file': URI.decode(current_user.image_url),
+                  'data-allowed-file-extensions': 'jpg jpeg gif png', 'data-max-file-size': '2M', 'data-show-remove': 'false', accept: 'image/jpg, image/jpeg, image/gif, image/png' %>
               </div>
             </div>
           </div>
@@ -51,9 +52,18 @@
   $(document).ready(function(){
 		$('.dropify').dropify({
       messages: {
-        'default': 'ここに画像をドロップ',
-        'replace': 'ここに画像をドロップ',
+        'default': '画像ファイルをドラッグ&ドロップ',
+        'replace': '画像ファイルをドラッグ&ドロップ',
         'remove':  '削除',
+        'error': '',
+      },
+      tpl: {
+        message: '<div class="dropify-message"><span class="file-icon" /> <p>{{ default }}<br>または<br>画像ファイルを選択</p></p></div>',
+        preview: '<div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message">{{ replace }}<br>または<br>画像ファイルを選択</p></div></div></div>',
+      },
+      error: {
+        'fileSize': '2MB以下の画像を選択してください。',
+        'fileExtension': '拡張子がjpg、jpeg、gif、pngの画像を選択してください。',
       }
     });
 	});
